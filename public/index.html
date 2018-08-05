@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>Visit Cambridge</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="options-box">
+        <h1>Visit Cambridge</h1>
+        <div>
+          <div className="location-type-changer">
+            <select value={this.props.location} onChange={(event) => this.props.selectLocationType(this.props.location, event.target.value)}>
+              <option value="Museum">Museum</option>
+              <option value="Shopping">Shopping</option>
+              <option value="Hotel">Hotel</option>
+              <option value="Green Spaces">Green Spaces</option>
+              <option value="Travel">Travel</option>
+              <option value="Tourist Attractions">None</option>
+              <option value="Emergency">None</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+    <script type="application/javascript" charset="utf-8" src="map-container.js"></script>
+    <script async defer
+        src=
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8&v=3&callback=initMap">
+    </script>
+
+  </body>
+</html>

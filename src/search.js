@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-import Locations from './Locations';
+import Markers from './Markers';
 
 
 class Search extends Component {
