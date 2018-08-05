@@ -527,7 +527,7 @@
       "lat": 40.743394,
       "lng": -73.954235
       },
-      "location_type": "Church",
+      "location_type": "Tourist",
       "operating_hours": {
       "Monday": "5:00 pm - 12:00 am",
       "Tuesday": "5:00 pm - 12:00 am",
@@ -586,7 +586,7 @@
       "lat": 40.743394,
       "lng": -73.954235
       },
-      "location_type": "Church",
+      "location_type": "Tourist",
       "operating_hours": {
       "Monday": "5:00 pm - 12:00 am",
       "Tuesday": "5:00 pm - 12:00 am",
@@ -666,7 +666,7 @@
           "lat": 40.743394,
           "lng": -73.954235
         },
-        "location_type": "University of Cambridge",
+        "location_type": "Tourist",
         "operating_hours": {
           "Monday": "5:00 pm - 12:00 am",
           "Tuesday": "5:00 pm - 12:00 am",
@@ -706,7 +706,7 @@
               "lat": 40.743394,
               "lng": -73.954235
             },
-            "location_type": "University of Cambridge",
+            "location_type": "Tourist",
             "operating_hours": {
               "Monday": "5:00 pm - 12:00 am",
               "Tuesday": "5:00 pm - 12:00 am",
@@ -746,7 +746,7 @@
                   "lat": 40.743394,
                   "lng": -73.954235
                 },
-                "location_type": "Church",
+                "location_type": "Tourist",
                 "operating_hours": {
                   "Monday": "5:00 pm - 12:00 am",
                   "Tuesday": "5:00 pm - 12:00 am",
@@ -786,7 +786,7 @@
                       "lat": 40.743394,
                       "lng": -73.954235
                     },
-                    "location_type": "Church",
+                    "location_type": "Tourist",
                     "operating_hours": {
                       "Monday": "5:00 pm - 12:00 am",
                       "Tuesday": "5:00 pm - 12:00 am",
@@ -806,7 +806,7 @@
                         "lat": 40.743394,
                         "lng": -73.954235
                       },
-                      "location_type": "Church",
+                      "location_type": "Tourist",
                       "operating_hours": {
                         "Monday": "5:00 pm - 12:00 am",
                         "Tuesday": "5:00 pm - 12:00 am",
