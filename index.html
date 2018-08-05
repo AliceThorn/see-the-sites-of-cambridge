@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+    <link rel="stylesheet" href="style.css">
+    <title>See the Sites of Camm</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="options-box">
+        <h1>Your Ely</h1>
+        <div>
+          <input id="show-listings" type="button" value="Show Listings">
+          <input id="hide-listings" type="button" value="Hide Listings">
+        </div>
+      </div>
+      <div id="map"></div>
+    </div>
+    <script type="application/javascript" charset="utf-8" src="map-container.js"></script>
+
+    <script async defer
+        src=
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyDT8Vra8bxxztOk5FWS6r-gXOA-jbxgZF4&v=3&callback=initMap">
+    </script>
+
+  </body>
+</html>

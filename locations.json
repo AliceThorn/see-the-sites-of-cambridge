@@ -1,0 +1,820 @@
+{
+  "locations": [{
+    "id": 1,
+    "name": "The Grafton Centre",
+    "photograph": "grafton.jpg",
+    "address": "171 E Broadway, New York, NY 10002",
+    "latlng": {
+      "lat": 40.713829,
+      "lng": -73.989667
+    },
+    "location_type": "Shopping",
+    "operating_hours": {
+      "Monday": "5:30 pm - 11:00 pm",
+      "Tuesday": "5:30 pm - 12:00 am",
+      "Wednesday": "5:30 pm - 12:00 am",
+      "Thursday": "5:30 pm - 12:00 am",
+      "Friday": "5:30 pm - 12:00 am",
+      "Saturday": "12:00 pm - 4:00 pm, 5:30 pm - 12:00 am",
+      "Sunday": "12:00 pm - 4:00 pm, 5:30 pm - 11:00 pm"
+    },
+
+  }, {
+    "id": 2,
+    "name": "The Grand Arcade",
+    "photograph": "grand-arcade.jpg",
+    "address": "919 Fulton St, Brooklyn, NY 11238",
+    "latlng": {
+      "lat": 40.683555,
+      "lng": -73.966393
+    },
+    "location_type": "Shopping",
+    "operating_hours": {
+      "Monday": "5:30 pm - 11:00 pm",
+      "Tuesday": "5:30 pm - 11:00 pm",
+      "Wednesday": "5:30 pm - 11:00 pm",
+      "Thursday": "5:30 pm - 11:00 pm",
+      "Friday": "5:30 pm - 11:00 pm",
+      "Saturday": "5:00 pm - 11:30 pm",
+      "Sunday": "12:00 pm - 3:00 pm, 5:00 pm - 11:00 pm"
+    },
+
+  }, {
+    "id": 3,
+    "name": "Scott Polar Institute",
+    "photograph": "scott-polar.jpg",
+    "address": "1 E 32nd St, New York, NY 10016",
+    "latlng": {
+      "lat": 40.747143,
+      "lng": -73.985414
+    },
+    "location_type": "Museum",
+    "operating_hours": {
+      "Monday": "11:30 am - 2:00 am",
+      "Tuesday": "11:30 am - 2:00 am",
+      "Wednesday": "11:30 am - 2:00 am",
+      "Thursday": "11:30 am - 2:00 am",
+      "Friday": "11:30 am - 6:00 am",
+      "Saturday": "11:30 am - 6:00 am",
+      "Sunday": "11:30 am - 2:00 am"
+    },
+
+  }, {
+    "id": 4,
+    "name": "Corpus Clock",
+    "neighborhood": "Manhattan",
+    "photograph": "corpus-clock.jpg",
+    "address": "205 E Houston St, New York, NY 10002",
+    "latlng": {
+      "lat": 40.722216,
+      "lng": -73.987501
+    },
+    "location_type": "Tourist",
+    "operating_hours": {
+      "Monday": "8:00 am - 10:30 pm",
+      "Tuesday": "8:00 am - 10:30 pm",
+      "Wednesday": "8:00 am - 10:30 pm",
+      "Thursday": "8:00 am - 2:30 am",
+      "Friday": "8:00 am - Sat",
+      "Saturday": "Open 24 hours",
+      "Sunday": "Sat - 10:30 pm"
+    },
+
+  }, {
+    "id": 5,
+    "name": "Jesus Green",
+    "photograph": "jesus-green.jpg",
+    "address": "261 Moore St, Brooklyn, NY 11206",
+    "latlng": {
+      "lat": 40.705089,
+      "lng": -73.933585
+    },
+    "location_type": "Green Spaces",
+    "operating_hours": {
+      "Monday": "11:00 am - 12:00 am",
+      "Tuesday": "11:00 am - 12:00 am",
+      "Wednesday": "11:00 am - 12:00 am",
+      "Thursday": "11:00 am - 12:00 am",
+      "Friday": "11:00 am - 12:00 am",
+      "Saturday": "10:00 am - 12:00 am",
+      "Sunday": "10:00 am - 12:00 am"
+    },
+
+  }, {
+    "id": 6,
+    "name": "Methematical Bridge",
+    "photograph": "6.jpg",
+    "address": "454 Van Brunt St, Brooklyn, NY 11231",
+    "latlng": {
+      "lat": 40.674925,
+      "lng": -74.016162
+    },
+    "location_type": "Tourist",
+    "operating_hours": {
+      "Monday": "Closed",
+      "Tuesday": "12:00 pm - 10:00 pm",
+      "Wednesday": "12:00 pm - 10:00 pm",
+      "Thursday": "12:00 pm - 10:00 pm",
+      "Friday": "12:00 pm - 11:00 pm",
+      "Saturday": "12:00 pm - 11:00 pm",
+      "Sunday": "12:00 pm - 9:00 pm"
+    },
+
+  }, {
+    "id": 7,
+    "name": "Addenbrookes Hospital",
+    "photograph": "7.jpg",
+    "address": "430 E 9th St, New York, NY 10009",
+    "latlng": {
+      "lat": 40.727397,
+      "lng": -73.983645
+    },
+    "location_type": "Emergency",
+    "operating_hours": {
+      "Monday": "11:30 am - 10:00 pm",
+      "Tuesday": "Closed",
+      "Wednesday": "11:30 am - 10:00 pm",
+      "Thursday": "11:30 am - 10:00 pm",
+      "Friday": "11:30 am - 10:00 pm",
+      "Saturday": "11:30 am - 10:00 pm",
+      "Sunday": "11:30 am - 10:00 pm"
+    },
+
+  }, {
+    "id": 8,
+    "name": "The Bridge of Sighs",
+    "neighborhood": "Manhattan",
+    "photograph": "8.jpg",
+    "address": "131 Sullivan St, New York, NY 10012",
+    "latlng": {
+      "lat": 40.726584,
+      "lng": -74.002082
+    },
+    "location_type": "Tourist",
+    "operating_hours": {
+      "Monday": "11:30 am - 3:00 pm, 5:30 pm - 11:00 pm",
+      "Tuesday": "11:30 am - 3:00 pm, 5:30 pm - 11:00 pm",
+      "Wednesday": "11:30 am - 3:00 pm, 5:30 pm - 11:00 pm",
+      "Thursday": "11:30 am - 3:00 pm, 5:30 pm - 11:00 pm",
+      "Friday": "11:30 am - 3:00 pm, 5:30 pm - 11:30 pm",
+      "Saturday": "10:00 am - 3:00 pm, 5:30 pm - 11:30 pm",
+      "Sunday": "10:00 am - 3:00 pm, 5:30 pm - 11:00 pm"
+    },
+
+  }, {
+    "id": 9,
+    "name": "Cambridge Police Station",
+    "photograph": "9.jpg",
+    "address": "1209 Jackson Ave, Queens, NY 11101",
+    "latlng": {
+      "lat": 40.743797,
+      "lng": -73.950652
+    },
+    "location_type": "Emergency",
+    "operating_hours": {
+      "Monday": "5:00 pm - 10:00 pm",
+      "Tuesday": "5:00 pm - 10:00 pm",
+      "Wednesday": "5:00 pm - 10:00 pm",
+      "Thursday": "5:00 pm - 10:00 pm",
+      "Friday": "5:00 pm - 11:00 pm",
+      "Saturday": "5:00 pm - 11:00 pm",
+      "Sunday": "5:00 pm - 10:00 pm"
+    },
+
+  }, {
+    "id": 10,
+    "name": "Cambridge Fire Station",
+    "neighborhood": "Queens",
+    "photograph": "10.jpg",
+    "address": "5-48 49th Ave, Queens, NY 11101",
+    "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+    },
+    "location_type": "Emergency",
+    "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+    },
+    }, {
+      "id": 11,
+      "name": "Sedgewick Museum of Earth Sciences",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+        "lat": 40.743394,
+        "lng": -73.954235
+      },
+      "location_type": "Museum",
+      "operating_hours": {
+        "Monday": "5:00 pm - 12:00 am",
+        "Tuesday": "5:00 pm - 12:00 am",
+        "Wednesday": "5:00 pm - 12:00 am",
+        "Thursday": "5:00 pm - 12:00 am",
+        "Friday": "5:00 pm - 12:00 am",
+        "Saturday": "11:00 am - 12:00 am",
+        "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+        "id": 12,
+        "name": "The Polar Museum",
+        "photograph": "10.jpg",
+        "address": "5-48 49th Ave, Queens, NY 11101",
+        "latlng": {
+          "lat": 40.743394,
+          "lng": -73.954235
+        },
+        "location_type": "Museum",
+        "operating_hours": {
+          "Monday": "5:00 pm - 12:00 am",
+          "Tuesday": "5:00 pm - 12:00 am",
+          "Wednesday": "5:00 pm - 12:00 am",
+          "Thursday": "5:00 pm - 12:00 am",
+          "Friday": "5:00 pm - 12:00 am",
+          "Saturday": "11:00 am - 12:00 am",
+          "Sunday": "11:00 am - 12:00 am"
+        },
+        }, {
+          "id": 13,
+          "name": "The Royal Cambridge Hotel",
+          "neighborhood": "Queens",
+          "photograph": "10.jpg",
+          "address": "5-48 49th Ave, Queens, NY 11101",
+          "latlng": {
+            "lat": 40.743394,
+            "lng": -73.954235
+          },
+          "location_type": "Hotel",
+          "operating_hours": {
+            "Monday": "5:00 pm - 12:00 am",
+            "Tuesday": "5:00 pm - 12:00 am",
+            "Wednesday": "5:00 pm - 12:00 am",
+            "Thursday": "5:00 pm - 12:00 am",
+            "Friday": "5:00 pm - 12:00 am",
+            "Saturday": "11:00 am - 12:00 am",
+            "Sunday": "11:00 am - 12:00 am"
+          },
+          }, {
+            "id": 14,
+            "name": "Travel Lodge Newmarket Road",
+            "neighborhood": "Queens",
+            "photograph": "10.jpg",
+            "address": "5-48 49th Ave, Queens, NY 11101",
+            "latlng": {
+              "lat": 40.743394,
+              "lng": -73.954235
+            },
+            "location_type": "Hotel",
+            "operating_hours": {
+              "Monday": "5:00 pm - 12:00 am",
+              "Tuesday": "5:00 pm - 12:00 am",
+              "Wednesday": "5:00 pm - 12:00 am",
+              "Thursday": "5:00 pm - 12:00 am",
+              "Friday": "5:00 pm - 12:00 am",
+              "Saturday": "11:00 am - 12:00 am",
+              "Sunday": "11:00 am - 12:00 am"
+            },
+            }, {
+              "id": 15,
+              "name": "Hotel Ibis",
+              "neighborhood": "Queens",
+              "photograph": "10.jpg",
+              "address": "5-48 49th Ave, Queens, NY 11101",
+              "latlng": {
+                "lat": 40.743394,
+                "lng": -73.954235
+              },
+              "location_type": "Hotel",
+              "operating_hours": {
+                "Monday": "5:00 pm - 12:00 am",
+                "Tuesday": "5:00 pm - 12:00 am",
+                "Wednesday": "5:00 pm - 12:00 am",
+                "Thursday": "5:00 pm - 12:00 am",
+                "Friday": "5:00 pm - 12:00 am",
+                "Saturday": "11:00 am - 12:00 am",
+                "Sunday": "11:00 am - 12:00 am"
+              },
+              }, {
+                "id": 16,
+                "name": "Tu Varsity Hotel and Spa",
+                "photograph": "10.jpg",
+                "address": "5-48 49th Ave, Queens, NY 11101",
+                "latlng": {
+                  "lat": 40.743394,
+                  "lng": -73.954235
+                },
+                "location_type": "Hotel",
+                "operating_hours": {
+                  "Monday": "5:00 pm - 12:00 am",
+                  "Tuesday": "5:00 pm - 12:00 am",
+                  "Wednesday": "5:00 pm - 12:00 am",
+                  "Thursday": "5:00 pm - 12:00 am",
+                  "Friday": "5:00 pm - 12:00 am",
+                  "Saturday": "11:00 am - 12:00 am",
+                  "Sunday": "11:00 am - 12:00 am"
+                },
+                }, {
+                  "id": 17,
+                  "name": "Gonville Hotel",
+                  "neighborhood": "Queens",
+                  "photograph": "10.jpg",
+                  "address": "5-48 49th Ave, Queens, NY 11101",
+                  "latlng": {
+                    "lat": 40.743394,
+                    "lng": -73.954235
+                  },
+                  "location_type": "Hotel",
+                  "operating_hours": {
+                    "Monday": "5:00 pm - 12:00 am",
+                    "Tuesday": "5:00 pm - 12:00 am",
+                    "Wednesday": "5:00 pm - 12:00 am",
+                    "Thursday": "5:00 pm - 12:00 am",
+                    "Friday": "5:00 pm - 12:00 am",
+                    "Saturday": "11:00 am - 12:00 am",
+                    "Sunday": "11:00 am - 12:00 am"
+                  },
+                  }, {
+                    "id": 18,
+                    "name": "Hotel du Vin and Bistro",
+                    "neighborhood": "Queens",
+                    "photograph": "10.jpg",
+                    "address": "5-48 49th Ave, Queens, NY 11101",
+                    "latlng": {
+                      "lat": 40.743394,
+                      "lng": -73.954235
+                    },
+                    "location_type": "Hotel",
+                    "operating_hours": {
+                      "Monday": "5:00 pm - 12:00 am",
+                      "Tuesday": "5:00 pm - 12:00 am",
+                      "Wednesday": "5:00 pm - 12:00 am",
+                      "Thursday": "5:00 pm - 12:00 am",
+                      "Friday": "5:00 pm - 12:00 am",
+                      "Saturday": "11:00 am - 12:00 am",
+                      "Sunday": "11:00 am - 12:00 am"
+                    },
+                    }, {
+                      "id": 19,
+                      "name": "Christ's Piece",
+                      "neighborhood": "Queens",
+                      "photograph": "10.jpg",
+                      "address": "5-48 49th Ave, Queens, NY 11101",
+                      "latlng": {
+                        "lat": 40.743394,
+                        "lng": -73.954235
+                      },
+                      "location_type": "Green Space",
+                      "operating_hours": {
+                        "Monday": "5:00 pm - 12:00 am",
+                        "Tuesday": "5:00 pm - 12:00 am",
+                        "Wednesday": "5:00 pm - 12:00 am",
+                        "Thursday": "5:00 pm - 12:00 am",
+                        "Friday": "5:00 pm - 12:00 am",
+                        "Saturday": "11:00 am - 12:00 am",
+                        "Sunday": "11:00 am - 12:00 am"
+                      },
+                      }, {
+                        "id": 20,
+                        "name": "Sheep's Green, Lammas Land",
+                        "neighborhood": "Queens",
+                        "photograph": "10.jpg",
+                        "address": "5-48 49th Ave, Queens, NY 11101",
+                        "latlng": {
+                          "lat": 40.743394,
+                          "lng": -73.954235
+                        },
+                        "location_type": "Green Space",
+                        "operating_hours": {
+                          "Monday": "5:00 pm - 12:00 am",
+                          "Tuesday": "5:00 pm - 12:00 am",
+                          "Wednesday": "5:00 pm - 12:00 am",
+                          "Thursday": "5:00 pm - 12:00 am",
+                          "Friday": "5:00 pm - 12:00 am",
+                          "Saturday": "11:00 am - 12:00 am",
+                          "Sunday": "11:00 am - 12:00 am"
+                        },
+                        }, {
+                          "id": 21,
+                          "name": "Museum of Classical Archeology",
+                          "neighborhood": "Queens",
+                          "photograph": "10.jpg",
+                          "address": "5-48 49th Ave, Queens, NY 11101",
+                          "latlng": {
+                            "lat": 40.743394,
+                            "lng": -73.954235
+                          },
+                          "location_type": "Museum",
+                          "operating_hours": {
+                            "Monday": "5:00 pm - 12:00 am",
+                            "Tuesday": "5:00 pm - 12:00 am",
+                            "Wednesday": "5:00 pm - 12:00 am",
+                            "Thursday": "5:00 pm - 12:00 am",
+                            "Friday": "5:00 pm - 12:00 am",
+                            "Saturday": "11:00 am - 12:00 am",
+                            "Sunday": "11:00 am - 12:00 am"
+                          },
+                          }, {
+                            "id": 22,
+                            "name": "Cambridge International Airport",
+                            "neighborhood": "Queens",
+                            "photograph": "10.jpg",
+                            "address": "5-48 49th Ave, Queens, NY 11101",
+                            "latlng": {
+                              "lat": 40.743394,
+                              "lng": -73.954235
+                            },
+                            "location_type": "Travel",
+                            "operating_hours": {
+                              "Monday": "5:00 pm - 12:00 am",
+                              "Tuesday": "5:00 pm - 12:00 am",
+                              "Wednesday": "5:00 pm - 12:00 am",
+                              "Thursday": "5:00 pm - 12:00 am",
+                              "Friday": "5:00 pm - 12:00 am",
+                              "Saturday": "11:00 am - 12:00 am",
+                              "Sunday": "11:00 am - 12:00 am"
+                            },
+                    }, {
+                      "id": 23,
+                      "name": "Cambridge North Train Station",
+                      "neighborhood": "Queens",
+                      "photograph": "10.jpg",
+                      "address": "5-48 49th Ave, Queens, NY 11101",
+                      "latlng": {
+                        "lat": 40.743394,
+                        "lng": -73.954235
+                      },
+                      "location_type": "Travel",
+                      "operating_hours": {
+                        "Monday": "5:00 pm - 12:00 am",
+                        "Tuesday": "5:00 pm - 12:00 am",
+                        "Wednesday": "5:00 pm - 12:00 am",
+                        "Thursday": "5:00 pm - 12:00 am",
+                        "Friday": "5:00 pm - 12:00 am",
+                        "Saturday": "11:00 am - 12:00 am",
+                        "Sunday": "11:00 am - 12:00 am"
+                      },
+      }, {
+      "id": 24,
+      "name": "Cambridge City Train Station",
+      "neighborhood": "Queens",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+      },
+      "location_type": "Travel",
+      "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+      "id": 25,
+      "name": "Parkers Piece",
+      "neighborhood": "Queens",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+      },
+      "location_type": "Green Space",
+      "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+      "id": 26,
+      "name": "The Fitzwilliam Museum",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+      },
+      "location_type": "Museum",
+      "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+      "id": 27,
+      "name": "Holy Trinity Church",
+      "neighborhood": "Queens",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+      },
+      "location_type": "Church",
+      "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+      "id": 27,
+      "name": "Cambridge University Museum of Zoology",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+      },
+      "location_type": "Museum",
+      "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+      "id": 28,
+      "name": "Midsummer Common",
+      "neighborhood": "Queens",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+      },
+      "location_type": "Green Space",
+      "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+      "id": 29,
+      "name": "Kings College Chapel",
+      "neighborhood": "Queens",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+      "lat": 40.743394,
+      "lng": -73.954235
+      },
+      "location_type": "Church",
+      "operating_hours": {
+      "Monday": "5:00 pm - 12:00 am",
+      "Tuesday": "5:00 pm - 12:00 am",
+      "Wednesday": "5:00 pm - 12:00 am",
+      "Thursday": "5:00 pm - 12:00 am",
+      "Friday": "5:00 pm - 12:00 am",
+      "Saturday": "11:00 am - 12:00 am",
+      "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+      "id": 30,
+      "name": "Punting on The River Cam",
+      "neighborhood": "Queens",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+        "lat": 40.743394,
+        "lng": -73.954235
+      },
+      "location_type": "Tourist",
+      "operating_hours": {
+        "Monday": "5:00 pm - 12:00 am",
+        "Tuesday": "5:00 pm - 12:00 am",
+        "Wednesday": "5:00 pm - 12:00 am",
+        "Thursday": "5:00 pm - 12:00 am",
+        "Friday": "5:00 pm - 12:00 am",
+        "Saturday": "11:00 am - 12:00 am",
+        "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+        "id": 31,
+        "name": "The River Cam",
+        "neighborhood": "Queens",
+        "photograph": "10.jpg",
+        "address": "5-48 49th Ave, Queens, NY 11101",
+        "latlng": {
+          "lat": 40.743394,
+          "lng": -73.954235
+        },
+        "location_type": "River",
+        "operating_hours": {
+          "Monday": "5:00 pm - 12:00 am",
+          "Tuesday": "5:00 pm - 12:00 am",
+          "Wednesday": "5:00 pm - 12:00 am",
+          "Thursday": "5:00 pm - 12:00 am",
+          "Friday": "5:00 pm - 12:00 am",
+          "Saturday": "11:00 am - 12:00 am",
+          "Sunday": "11:00 am - 12:00 am"
+        },
+    }, {
+      "id": 32,
+      "name": "Museum of Archeology & Anthropology",
+      "neighborhood": "Queens",
+      "photograph": "10.jpg",
+      "address": "5-48 49th Ave, Queens, NY 11101",
+      "latlng": {
+        "lat": 40.743394,
+        "lng": -73.954235
+      },
+      "location_type": "Museum",
+      "operating_hours": {
+        "Monday": "5:00 pm - 12:00 am",
+        "Tuesday": "5:00 pm - 12:00 am",
+        "Wednesday": "5:00 pm - 12:00 am",
+        "Thursday": "5:00 pm - 12:00 am",
+        "Friday": "5:00 pm - 12:00 am",
+        "Saturday": "11:00 am - 12:00 am",
+        "Sunday": "11:00 am - 12:00 am"
+      },
+      }, {
+        "id": 33,
+        "name": "Christ College",
+        "neighborhood": "Queens",
+        "photograph": "10.jpg",
+        "address": "5-48 49th Ave, Queens, NY 11101",
+        "latlng": {
+          "lat": 40.743394,
+          "lng": -73.954235
+        },
+        "location_type": "University of Cambridge",
+        "operating_hours": {
+          "Monday": "5:00 pm - 12:00 am",
+          "Tuesday": "5:00 pm - 12:00 am",
+          "Wednesday": "5:00 pm - 12:00 am",
+          "Thursday": "5:00 pm - 12:00 am",
+          "Friday": "5:00 pm - 12:00 am",
+          "Saturday": "11:00 am - 12:00 am",
+          "Sunday": "11:00 am - 12:00 am"
+        },
+        }, {
+          "id": 34,
+          "name": "Trinity College",
+          "neighborhood": "Queens",
+          "photograph": "10.jpg",
+          "address": "5-48 49th Ave, Queens, NY 11101",
+          "latlng": {
+            "lat": 40.743394,
+            "lng": -73.954235
+          },
+          "location_type": "Univerity of Cambridge",
+          "operating_hours": {
+            "Monday": "5:00 pm - 12:00 am",
+            "Tuesday": "5:00 pm - 12:00 am",
+            "Wednesday": "5:00 pm - 12:00 am",
+            "Thursday": "5:00 pm - 12:00 am",
+            "Friday": "5:00 pm - 12:00 am",
+            "Saturday": "11:00 am - 12:00 am",
+            "Sunday": "11:00 am - 12:00 am"
+          },
+          }, {
+            "id": 35,
+            "name": "Department of Chemistry",
+            "neighborhood": "Queens",
+            "photograph": "10.jpg",
+            "address": "5-48 49th Ave, Queens, NY 11101",
+            "latlng": {
+              "lat": 40.743394,
+              "lng": -73.954235
+            },
+            "location_type": "University of Cambridge",
+            "operating_hours": {
+              "Monday": "5:00 pm - 12:00 am",
+              "Tuesday": "5:00 pm - 12:00 am",
+              "Wednesday": "5:00 pm - 12:00 am",
+              "Thursday": "5:00 pm - 12:00 am",
+              "Friday": "5:00 pm - 12:00 am",
+              "Saturday": "11:00 am - 12:00 am",
+              "Sunday": "11:00 am - 12:00 am"
+            },
+            }, {
+              "id": 36,
+              "name": "Cambridge Univeristy Botanical Gardens",
+              "neighborhood": "Queens",
+              "photograph": "10.jpg",
+              "address": "5-48 49th Ave, Queens, NY 11101",
+              "latlng": {
+                "lat": 40.743394,
+                "lng": -73.954235
+              },
+              "location_type": "Green Space",
+              "operating_hours": {
+                "Monday": "5:00 pm - 12:00 am",
+                "Tuesday": "5:00 pm - 12:00 am",
+                "Wednesday": "5:00 pm - 12:00 am",
+                "Thursday": "5:00 pm - 12:00 am",
+                "Friday": "5:00 pm - 12:00 am",
+                "Saturday": "11:00 am - 12:00 am",
+                "Sunday": "11:00 am - 12:00 am"
+              },
+              }, {
+                "id": 37,
+                "name": "Church of St Mary the Great",
+                "neighborhood": "Queens",
+                "photograph": "10.jpg",
+                "address": "5-48 49th Ave, Queens, NY 11101",
+                "latlng": {
+                  "lat": 40.743394,
+                  "lng": -73.954235
+                },
+                "location_type": "Church",
+                "operating_hours": {
+                  "Monday": "5:00 pm - 12:00 am",
+                  "Tuesday": "5:00 pm - 12:00 am",
+                  "Wednesday": "5:00 pm - 12:00 am",
+                  "Thursday": "5:00 pm - 12:00 am",
+                  "Friday": "5:00 pm - 12:00 am",
+                  "Saturday": "11:00 am - 12:00 am",
+                  "Sunday": "11:00 am - 12:00 am"
+                },
+                }, {
+                  "id": 38,
+                  "name": "Cambridge Computing History Museum",
+                  "neighborhood": "Queens",
+                  "photograph": "10.jpg",
+                  "address": "5-48 49th Ave, Queens, NY 11101",
+                  "latlng": {
+                    "lat": 40.743394,
+                    "lng": -73.954235
+                  },
+                  "location_type": "Museum",
+                  "operating_hours": {
+                    "Monday": "5:00 pm - 12:00 am",
+                    "Tuesday": "5:00 pm - 12:00 am",
+                    "Wednesday": "5:00 pm - 12:00 am",
+                    "Thursday": "5:00 pm - 12:00 am",
+                    "Friday": "5:00 pm - 12:00 am",
+                    "Saturday": "11:00 am - 12:00 am",
+                    "Sunday": "11:00 am - 12:00 am"
+                  },
+                  }, {
+                    "id": 39,
+                    "name": "Holy Trinity Church",
+                    "neighborhood": "Queens",
+                    "photograph": "10.jpg",
+                    "address": "5-48 49th Ave, Queens, NY 11101",
+                    "latlng": {
+                      "lat": 40.743394,
+                      "lng": -73.954235
+                    },
+                    "location_type": "Church",
+                    "operating_hours": {
+                      "Monday": "5:00 pm - 12:00 am",
+                      "Tuesday": "5:00 pm - 12:00 am",
+                      "Wednesday": "5:00 pm - 12:00 am",
+                      "Thursday": "5:00 pm - 12:00 am",
+                      "Friday": "5:00 pm - 12:00 am",
+                      "Saturday": "11:00 am - 12:00 am",
+                      "Sunday": "11:00 am - 12:00 am"
+                    },
+                    }, {
+                      "id": 40,
+                      "name": "Our Lady of the English Matyrs Church",
+                      "neighborhood": "Queens",
+                      "photograph": "10.jpg",
+                      "address": "5-48 49th Ave, Queens, NY 11101",
+                      "latlng": {
+                        "lat": 40.743394,
+                        "lng": -73.954235
+                      },
+                      "location_type": "Church",
+                      "operating_hours": {
+                        "Monday": "5:00 pm - 12:00 am",
+                        "Tuesday": "5:00 pm - 12:00 am",
+                        "Wednesday": "5:00 pm - 12:00 am",
+                        "Thursday": "5:00 pm - 12:00 am",
+                        "Friday": "5:00 pm - 12:00 am",
+                        "Saturday": "11:00 am - 12:00 am",
+                        "Sunday": "11:00 am - 12:00 am"
+                      },
+  }]
+}
