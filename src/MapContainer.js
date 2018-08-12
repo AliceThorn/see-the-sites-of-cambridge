@@ -1,103 +1,154 @@
 import React, {Component} from 'react'
+//import { GoogleApiWrapper } from 'google-maps-react'
+//import ReactDOM from 'react-dom'
+//import Map from './Map'
 
-import Locations from './Locations';
+import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+
+//export class MapContainer extends Component {
 
 
-class MapContainer extends Component {
+  export class MapContainer extends Component {
+    render() {
+      const style = {
+  width: '100%',
+  height: '100%'
+}
+const points = [
+    { lat: 52.02, lng: 0.2601 },
+    { lat: 52.03, lng: 0.2602 },
+    { lat: 51.03, lng: 0.2604 },
+    { lat: 52.05, lng: 0.2602 }
+]
+const bounds = new this.props.google.maps.LatLngBounds();
+for (var i = 0; i < points.length; i++) {
+  bounds.extend(points[i]);
+}
+      return (
+        <Map
+          google={this.props.google}
+          style={style}
+          initialCenter={{
+            lat:52.2053,
+            lng: 0.1218
+          }}
+           bounds={bounds}
+          zoom={15}
+          onClick={this.onMapClicked}
+        >
 
-  render(){
-    return(
-var map;
+          <Marker onClick={this.onMarkerClick}
+                  name={'Current location'} />
 
-var markers = []
+          <InfoWindow onClose={this.onInfoWindowClose}>
+              <div>
+                <h1>
 
-function initMap(){
-  var styles = [
-      {
-        featureType: 'water',
-        stylers: [
-          { color: '#0099dd' }
-        ]
-      },{
-        featureType: 'administrative',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          { color: '#ffffff' },
-          { weight: 6 }
-        ]
-      },{
-        featureType: 'administrative',
-        elementType: 'labels.text.fill',
-        stylers: [
-          { color: '#e85113' }
-        ]
-      },{
-        featureType: 'road.highway',
-        elementType: 'geometry.stroke',
-        stylers: [
-          { color: '#efe9e4' },
-          { lightness: -40 }
-        ]
-      },{
-        featureType: 'transit.station',
-        stylers: [
-          { weight: 9 },
-          { hue: '#e85113' }
-        ]
-      },{
-        featureType: 'road.highway',
-        elementType: 'labels.icon',
-        stylers: [
-          { visibility: 'off' }
-        ]
-      },{
-        featureType: 'water',
-        elementType: 'labels.text.stroke',
-        stylers: [
-          { lightness: 100 }
-        ]
-      },{
-        featureType: 'water',
-        elementType: 'labels.text.fill',
-        stylers: [
-          { lightness: -100 }
-        ]
-      },{
-        featureType: 'poi',
-        elementType: 'geometry',
-        stylers: [
-          { visibility: 'on' },
-          { color: '#aadd55' }
-        ]
-      },{
-        featureType: 'road.highway',
-        elementType: 'geometry.fill',
-        stylers: [
-          { color: '#efe9e4' },
-          { lightness: -25 }
-        ]
-      }
-    ];
+                Cambridge</h1>
+              </div>
+          </InfoWindow>
+        </Map>
+      );
+    }
+  }
 
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 52.252454, lng: 0.268072},
+
+    /*  initMap () {
+if(this.props && this.props.google) {
+const {google} = this.props
+//const maps = google.maps
+//const mapRef = this.refs.map
+//const node = ReactDOM.findDOMNode(mapRef)
+
+/*const mapConfiguration = Object.assign({}, {
+center: {lat: 52.4041682023796, lng: 0.26229858648434856},
+
+})
+
+    this.map = new google.maps.Map(this.refs.map, {
+      center: {lat: 52.4041682023796, lng: 0.26229858648434856},
       zoom: 13,
-      styles: styles,
-      mapTypeControl: false
-    });
+      mapTypeControl: false,
 
-  var locations = var locations = [
-    {title: 'Ely Museum', location: {lat: 52.40092150052206, lng: 0.2631139780248759}},
-    {title: 'Ely Cathedral', location: {lat: 52.399166694893346, lng: 0.2637577081884501}},
-    {title: 'Ely Football Club', location: {lat: 52.411216771263845, lng: 0.24659157049313762}},
-    {title: 'Ely Train Station', location: {lat: 52.39100190882851, lng: 0.2664828730469253}},
-    {title: 'Ely Hospital', location: {lat: 52.413939192250766, lng: 0.27564525854245403}},
-    {title: 'Ely Golf Club', location: {lat: 52.39233757500849, lng: 0.25038961895756984}}
-  ];
+    })}
 }
-)
-}
+    render() {
+    const mapStyle = {
+      width: 500,
+      height: 300,
+      border: '1px solid black'
+    };
+
+    return (
+      <div>
+        <div ref="map" style={mapStyle}> should be a map!
+        <Map />
+        </div>
+
+      </div>
+    );
+  }
+  }
+
+  ReactDOM.render(
+  <Map />,
+  document.getElementById('root')
+);*/
+
+
+  /*render() {
+    const style = {
+    width: '100%',
+    height: '100%'
+  }
+    return (
+      <Map google={this.props.google}
+          style={style}
+          initialCenter={{
+            lat: 52.199869,
+            lng: 0.119986
+          }}
+          zoom={15}
+          onClick={this.onMapClicked} >
+
+        <Marker onClick={this.onMarkerClick}
+                name={'Current location'} />
+
+        <InfoWindow onClose={this.onInfoWindowClose}>
+            <div>
+              <h1>Page</h1>
+            </div>
+        </InfoWindow>
+      </Map>
+    );
+  }
+}*/
+
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8'
+})(MapContainer)
+
+
+
+/*
+
+export class MapContainer extends Component {
+  render() {
+    const style = {
+      width: '100vw',
+      height: '100vh'
+    }
+    return (
+      <div style={style}>
+        <Map google={this.props.google}
+          />
+      </div>
+    )
+  }
 }
 
-export default MapContainer
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8'
+})(MapContainer)*/
+
 //AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8

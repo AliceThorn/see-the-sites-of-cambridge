@@ -1,7 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-import MapApp from './MapApp'
-import './App.css'
+import App from './App';
+import './App.css';
 
-ReactDOM.render(<MapApp />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));

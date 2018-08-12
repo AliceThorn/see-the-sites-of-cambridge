@@ -3,35 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-    <link rel="stylesheet" href="style.css">
-    <title>Visit Cambridge</title>
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <!--<link href='https://api.mapbox.com/mapbox-gl-js/v0.47.0/mapbox-gl.css' rel='stylesheet' />  -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tag above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>See the Sites of Cambridge</title>
   </head>
   <body>
-    <div class="container">
-      <div class="options-box">
-        <h1>Visit Cambridge</h1>
-        <div>
-          <div className="location-type-changer">
-            <select value={this.props.location} onChange={(event) => this.props.selectLocationType(this.props.location, event.target.value)}>
-              <option value="Museum">Museum</option>
-              <option value="Shopping">Shopping</option>
-              <option value="Hotel">Hotel</option>
-              <option value="Green Spaces">Green Spaces</option>
-              <option value="Travel">Travel</option>
-              <option value="Tourist Attractions">None</option>
-              <option value="Emergency">None</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div id="map"></div>
-    </div>
-    <script type="application/javascript" charset="utf-8" src="map-container.js"></script>
-    <script async defer
-        src=
-        "https://maps.googleapis.com/maps/api/js?key=AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8&v=3&callback=initMap">
-    </script>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
 
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start`.
+      To create a production bundle, use `npm run build`.
+    -->
   </body>
 </html>
