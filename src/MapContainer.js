@@ -20,15 +20,17 @@ export class MapContainer extends Component {
     selectedPlace: {},
   };
 
+
 //As understood from google-maps-react npm documentation
       onMarkerClick = (props, place, e) =>
         this.setState({
-          selectedPlace: this.state.place,
+          selectedPlace: props,
           activeMarker: place,
           showingInfoWindow: true
         });
 
-//As understood from google-maps-react npm documentation
+
+/*As understood from google-maps-react npm documentation
       onMapClicked = (props) => {
         if (this.state.showingInfoWindow) {
           this.setState({
@@ -36,7 +38,9 @@ export class MapContainer extends Component {
             activeMarker: null
           })
         }
-      };
+      };*/
+
+
 
 
 
@@ -73,7 +77,6 @@ const markers = this.state.places
       return (
         <Map
           google={this.props.google}
-        
           initialCenter={{
             lat:52.2053,
             lng: 0.1218
@@ -95,14 +98,15 @@ const markers = this.state.places
             />
         ))}
         {/* As explained in google-maps-react npm documentation*/}
-        <InfoWindow
-        marker={this.state.activeMarker}
-        visible={this.state.showingInfoWindow}>
-              onClose={this.onInfoWindowClose}>
-                    <div>
-                      <h1>{this.state.selectedPlace.title}</h1>
-                    </div>
-                </InfoWindow>
+            <InfoWindow
+                marker={this.state.activeMarker}
+                onOpen={this.windowHasOpened}
+                onClose={this.windowHasClosed}
+                visible={this.state.showingInfoWindow}>
+                  <div>
+                    <h4>{this.state.selectedPlace.title}</h4>
+                  </div>
+              </InfoWindow>
 
         </Map>
 
