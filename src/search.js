@@ -19,13 +19,14 @@ class Search extends Component {
 
 
    render() {
-     const { places, place } = this.props
+     const { places } = this.props
      const { query } = this.state
+
 
      let locationResults
      if (query) {
        const match = new RegExp(escapeRegExp(query), 'i')
-       locationResults = places.filter((place) => match.test(place.title))
+      locationResults = places.filter((place) => match.test(place.title))
      } else {
        locationResults = {places}
      }
@@ -41,14 +42,14 @@ class Search extends Component {
                    value={ query }
                    onChange={(event) => this.updateQuery(event.target.value)} />
           </div>
-
+  <button>Search</button>
           <ol className='place-list'>
-            {locationResults.map((place) => (
-              <li key={place.id} className='place-list-item'>
+            {this.state.locationResults.map((place,i) => (
+              <li key={i} className='place-list-item'>
                 <div className='place-details'>
                   <p>{place.title}</p>
-                  <p>{place.location.lat}</p>
-                  <p>{place.location.lng}</p>
+                  {/*<p>{place.location.lat}</p>*/}
+                  {/*<p>{place.location.lng}</p>*/}
                 </div>
               </li>
             ))}
