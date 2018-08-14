@@ -21,17 +21,14 @@ class Search extends Component {
     console.log(query)
   }
 
-
-
-
   clearQuery = () => {
      this.setState({ query: '' })
+     this.setState({ queryResult: this.state.places})
    }
 
 
    render() {
-     const { places } = this.props
-     const { query } = this.state
+     const { query, places } = this.state
 
 
      let queryResults
@@ -39,27 +36,34 @@ class Search extends Component {
        const match = new RegExp(escapeRegExp(query), 'i')
       queryResults = this.state.places.filter((place) => match.test(place.title))
      } else {
-       queryResults = places
+       queryResults = this.state.places
      }
 
    return(
      <div>
         <div className="choose-location-type">
-          <h3>Where would you like to go today?</h3>
+          <h3>Sights of Cambridge City</h3>
           <div className="map-input-wrapper">
             <input className="search-bar"
                    type="text"
                    role="search"
-                   placeholder="Where would you like to go today?"
+                   placeholder="Type in a place of Interest"
                    value={ query }
                    onChange={(event) => this.updateQuery(event.target.value)} />
           </div>
-  <button className='button'>Search</button>
+  {/*<button className='button'>Search</button>*/}
+
+  {queryResults.length !== places.length && (
+          <div className='places-list'>
+            <span>Now showing {queryResults.length} of {places.length} total</span>
+            <button className='button' onClick={this.clearQuery}>Show All</button>
+          </div>
+        )}
           <ul className='place-list'>
-              {this.state.places.map((place) => (
-              <li key={place.id} className='place-list-item'>
+              {queryResults.map((queryResult,i) => (
+              <li key={i} className='place-list-item'>
                 <div className='place-details'>
-                  <h3>{place.title}</h3>
+                  <h3>{queryResult.title}</h3>
                   <hr></hr>
                 </div>
               </li>
