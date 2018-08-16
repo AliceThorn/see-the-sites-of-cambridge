@@ -1,27 +1,32 @@
 import React, {Component} from 'react'
-
-//import ReactDOM from 'react-dom'
+import escapeRegExp from 'escape-string-regexp'
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 
 export class MapContainer extends Component {
-    state = {
-      places:[
-      {title: 'The Fitzwilliam Museum', location: {lat: 52.199869, lng: 0.119986}},
-      {title: 'Mathematical Bridge', location: {lat: 52.202182, lng: 0.115019}},
-      {title: 'Addenbrookes Hospital', location: {lat: 52.17595, lng: 0.14045}},
-      {title: 'The Grand Arcade', location: {lat: 52.204162, lng: 0.122344}},
-      {title: 'Kings College Chapel', location: {lat: 52.204797, lng: 0.116566}},
-      {title: 'Cambridge University Botanical Gardens', location: {lat: 52.193495, lng: 0.12576}}
-    ],
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {},
+state = {
+  showingInfoWindow: false,
+  activeMarker: {},
+  selectedPlace: {},
+  queryResults:[]
   };
 
 
-//As understood from google-maps-react npm documentation
+  /*const markers= markers.map(place,i) => {
+  const marker  = new google.maps.Marker({
+  title: place.title,
+                  position: { lat: place.location.lat,
+                              lng: place.location.lng
+                            }
+          })
+        }
+markers.push(marker);*/
+
+
+
+
+//As understood from google-maps-react npm documentation - iopens an info window on marker click
       onMarkerClick = (props, place, e) =>
         this.setState({
           selectedPlace: props,
@@ -29,23 +34,36 @@ export class MapContainer extends Component {
           showingInfoWindow: true
         });
 
+//As understood from google-maps-react npm documentation
+        onMapClicked = (props) => {
+            if (this.state.showingInfoWindow) {
+              this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+              })
+            }
+          }
 
-/*As understood from google-maps-react npm documentation
-      onMapClicked = (props) => {
-        if (this.state.showingInfoWindow) {
-          this.setState({
-            showingInfoWindow: false,
-            activeMarker: null
-          })
-        }
-      };*/
+          /*disableAutoPan = (clicked, e) => {
+              if (this.onClicked) {
+                this.setState({
+                  marker: clicked,
+                  disableAutoPan: true,
+                })
+              }
+            }*/
 
+render() {
+           const { places, query} = this.props
 
-
-
-
-    render() {
-
+           let queryResults
+           if (query) {
+             const match = new RegExp(escapeRegExp(query), 'i')
+            queryResults = places.filter((place) => match.test(place.title))
+           } else {
+             queryResults = places
+           }
+// Bounds - As understood from google-maps-react npm documentation
 const points = [
     { lat: 52.02, lng: 0.2601 },
     { lat: 52.03, lng: 0.2602 },
@@ -57,58 +75,80 @@ for (var i = 0; i < points.length; i++) {
   bounds.extend(points[i]);
 }
 
+    return (
+      <div>
+      <div className="search-box">
+         <div className="choose-location-type">
+           <h3>Sights of Cambridge City</h3>
+          <div className="map-input-wrapper">
+             <input className="search-bar"
+                    type="text"
+                    role="search"
+                    placeholder="Type in a place of Interest"
+                    value={ query }
+                    onChange={(event) => this.props.updateQuery(event.target.value)} />
+           </div>
+         </div>
+{/*As understood from udacity course notes - creates a list of searche places*/}
+           {queryResults.length !== places.length && (
+             <div className='places-list'>
+                <span>Now showing {queryResults.length} of {places.length} total</span>
+                <button className='button' onClick={this.props.clearQuery}>Show All</button>
+              </div>
+            )}
+              <ul className='place-list'>
+                {queryResults.map((queryResult,i) => (
+                  <li key={i} className='place-list-item'>
+                      <div className='place-details'>
+                          <h3>{queryResult.title}</h3>
+                          <hr></hr>
+                      </div>
+                  </li>
+                ))}
+                </ul>
 
-/*const addMarkers = this.state.places.map((place,i)=>{
-  const marker  = new this.props.google.maps.Marker({
-    title: place.title,
-    position: { lat: place.location.lat,
-                lng: place.location.lng
-              },
-              id:i
-})
-return (
-
-console.log('all maped')
-)
-})*/
-
-const markers = this.state.places
-
-      return (
-        <Map
-          google={this.props.google}
-          initialCenter={{
-            lat:52.2053,
-            lng: 0.1218
-          }}
-           bounds={bounds}
-          zoom={15}
-          onClick={this.onMapClicked}
-
-        >
+      </div>
+        <div className='map'>
+          <Map
+            google={this.props.google}
+            initialCenter={{
+              lat:52.2053,
+              lng: 0.1218
+            }}
+            bounds={bounds}
+            zoom={15}
+            mapTypeControl={false}
+            onClick={this.onMapClicked}
+            role="application"
+          >
 {/*pass an array of markers and map over them  -  As understood  here: https://stackoverflow.com/questions/43859785/how-do-i-display-multiple-markers-with-react-google-maps*/}
-        {markers.map((place,i) => (
-            <Marker
-              onClick={this.onMarkerClick}
-              name={'Current location'}
-              title={place.title}
-              position={{ lat: place.location.lat, lng: place.location.lng }}
-              key={i}
-              animation= {this.props.google.maps.Animation.DROP}
-            />
-        ))}
-        {/* As explained in google-maps-react npm documentation*/}
-            <InfoWindow
+            {queryResults.map((place,i) => (
+              <Marker
+                onClick={this.onMarkerClick}
+                onMapClicked={this.onMapClicked}
+                display ={this.disableAutoPan}
+                title={place.title}
+                position={{ lat: place.location.lat, lng: place.location.lng }}
+                key={i}
+                animation= {this.props.google.maps.Animation.DROP}
+              />
+              ))}
+{/* As explained in google-maps-react npm documentation*/}
+              <InfoWindow
                 marker={this.state.activeMarker}
                 onOpen={this.windowHasOpened}
                 onClose={this.windowHasClosed}
-                visible={this.state.showingInfoWindow}>
-                  <div>
-                    <h4>{this.state.selectedPlace.title}</h4>
-                  </div>
+                visible={this.state.showingInfoWindow}
+                disableAutoPan={true}
+              >
+                <div>
+                  <h4>{this.state.selectedPlace.title}</h4>
+                </div>
               </InfoWindow>
+          </Map>
+        </div>
 
-        </Map>
+      </div>
 
       );
     }

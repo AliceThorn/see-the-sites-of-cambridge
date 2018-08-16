@@ -1,6 +1,7 @@
 .App {
-  display: flex;
-  flex-wrap: wrap;
+  display:flex;
+flex-wrap: wrap;
+flex-direction: 
 }
 
 .App-header {
@@ -13,21 +14,26 @@
 }
 
 .App-footer {
+  text-align: center;
   width:100%;
+  height:10vh;
   background-color: #ff6600;
   color: white;
+}
+.map-container{
+  width: 100%;
 }
 
 .search-box{
 width:25%;
-height:80vh;
+height:70vh;
 background-color:#716C6B;
 color: white;
 }
 
-.map-container{
+.map{
     width:75%;
-    height:80vh;
+    height:70vh;
     position: relative;
 }
 
@@ -51,10 +57,32 @@ color: white;
   width: 80px;
   margin-top:15px;
   margin-bottom:15px;
-  margin-right:15px;
+  margin-left:15px;
 }
 
 .places-list {
   margin-top:15px;
+  margin-left:15px;
+}
+
+.select-location-type{
+  margin-top:15px;
   margin-bottom:15px;
+  margin-left:15px;
+}
+ul{
+  list-style-type: none;
+}
+.map-select-wrapper{
+  background-color: #ff6600;
+  font-color:white;
+  width: 100px;
+  cursor: pointer;
+}
+
+ul.place-list{
+  padding-left:0px;
+}
+.place-details{
+  padding-left:5px;
 }
