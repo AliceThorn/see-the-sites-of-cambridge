@@ -7,7 +7,6 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 export class MapContainer extends Component {
 state = {
   showingInfoWindow: false,
-  disableAutoPan: false,
   activeMarker: {},
   selectedPlace: {},
   queryResults:[]
@@ -33,7 +32,6 @@ markers.push(marker);*/
           selectedPlace: props,
           activeMarker: place,
           showingInfoWindow: true,
-          disableAutoPan: false
         });
 
 //As understood from google-maps-react npm documentation
@@ -46,43 +44,25 @@ markers.push(marker);*/
             }
           }
 
-
-
-          /*disableAutoPan = (clicked, e) => {
-              if (this.onClicked) {
-                this.setState({
-                  marker: clicked,
-                  disableAutoPan: true,
-                })
-              }
-            }
-
-    this.props.google.maps.event.addListenerOnce(map, 'idle', () => {
-  document.getElementsByTagName('iframe')[0].title = "Google Maps";
-})*/
-
-
 render() {
-           const { places, query} = this.props
 
-           let queryResults
-           if (query) {
-             const match = new RegExp(escapeRegExp(query), 'i')
-            queryResults = places.filter((place) => match.test(place.title))
-           } else {
-             queryResults = places
-           }
+const { places, query} = this.props
+
+let queryResults
+  if (query) {
+    const match = new RegExp(escapeRegExp(query), 'i')
+    queryResults = places.filter((place) => match.test(place.title))
+    } else {
+      queryResults = places
+  }
+
 // Bounds - As understood from google-maps-react npm documentation
-
 const bounds = new this.props.google.maps.LatLngBounds();
-/*for (var i = 0; i < points.length; i++) {
-  bounds.extend(points[i]);
-}*/
-
+/*for (var i = 0; i < points.length; i++) {bounds.extend(points[i]);}*/
 places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.location.lng }));
 
     return (
-      <div>
+      <div className ="map-container">
       <div className="search-box">
          <div className="choose-location-type">
            <h3>Sights of Cambridge City</h3>
@@ -91,7 +71,6 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
                     type="text"
                     role="search"
                     aria-label="Search"
-                    tabindex="0"
                     placeholder="Type in a place of Interest"
                     value={ query }
                     onChange={(event) => this.props.updateQuery(event.target.value)} />
@@ -99,15 +78,15 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
          </div>
 {/*As understood from udacity course notes - creates a list of searche places*/}
            {queryResults.length !== places.length && (
-             <div className='places-list'>
+             <div className="places-list">
                 <span>Now showing {queryResults.length} of {places.length} total</span>
-                <button className='button' onClick={this.props.clearQuery}>Show All</button>
+                <button className="button" onClick={this.props.clearQuery}>Show All</button>
               </div>
             )}
-              <ul className='place-list'>
+              <ul className="place-list">
                 {queryResults.map((queryResult,i) => (
-                  <li key={i} className='place-list-item' >
-                      <div className='place-details' tabindex="0">
+                  <li key={i} className="place-list-item" >
+                      <div className="place-details">
                           <h3>{queryResult.title}</h3>
                           <hr></hr>
                       </div>
@@ -116,7 +95,7 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
                 </ul>
 
       </div>
-        <div className='map' aria-label="google-maps-area" tabindex="0" >
+        <div className="map" aria-label="google-maps-area">
           <Map
             google={this.props.google}
             initialCenter={{
@@ -134,7 +113,6 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
               <Marker
                 onClick={this.onMarkerClick}
                 onMapClicked={this.onMapClicked}
-                display ={this.disableAutoPan}
                 title={place.title}
                 position={{ lat: place.location.lat, lng: place.location.lng }}
                 key={i}
@@ -147,12 +125,12 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
                 onOpen={this.windowHasOpened}
                 onClose={this.windowHasClosed}
                 visible={this.state.showingInfoWindow}
-                disableAutoPan={true}
               >
                 <div>
                   <h4>{this.state.selectedPlace.title}</h4>
                 </div>
               </InfoWindow>
+
           </Map>
         </div>
 
@@ -166,97 +144,5 @@ export default GoogleApiWrapper({
   apiKey: 'AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8'
 })(MapContainer)
 
-/*  initMap () {
-if(this.props && this.props.google) {
-const {google} = this.props
-//const maps = google.maps
-//const mapRef = this.refs.map
-//const node = ReactDOM.findDOMNode(mapRef)
-
-/*const mapConfiguration = Object.assign({}, {
-center: {lat: 52.4041682023796, lng: 0.26229858648434856},
-
-})
-
-this.map = new google.maps.Map(this.refs.map, {
-  center: {lat: 52.4041682023796, lng: 0.26229858648434856},
-  zoom: 13,
-  mapTypeControl: false,
-
-})}
-}
-render() {
-const mapStyle = {
-  width: 500,
-  height: 300,
-  border: '1px solid black'
-};
-
-return (
-  <div>
-    <div ref="map" style={mapStyle}> should be a map!
-    <Map />
-    </div>
-
-  </div>
-);
-}
-}
-
-ReactDOM.render(
-<Map />,
-document.getElementById('root')
-);*/
-
-
-/*render() {
-const style = {
-width: '100%',
-height: '100%'
-}
-return (
-  <Map google={this.props.google}
-      style={style}
-      initialCenter={{
-        lat: 52.199869,
-        lng: 0.119986
-      }}
-      zoom={15}
-      onClick={this.onMapClicked} >
-
-    <Marker onClick={this.onMarkerClick}
-            name={'Current location'} />
-
-    <InfoWindow onClose={this.onInfoWindowClose}>
-        <div>
-          <h1>Page</h1>
-        </div>
-    </InfoWindow>
-  </Map>
-);
-}
-}*/
-
-
-/*
-
-export class MapContainer extends Component {
-  render() {
-    const style = {
-      width: '100vw',
-      height: '100vh'
-    }
-    return (
-      <div style={style}>
-        <Map google={this.props.google}
-          />
-      </div>
-    )
-  }
-}
-
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8'
-})(MapContainer)*/
 
 //AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8

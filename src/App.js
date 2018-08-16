@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import MapContainer from './MapContainer'
-//import Search from './Search'
+
+//Error Handling in case of failure to load Google Maps API
+let gm_authFailure=() => {console.log("I'm sorry Dave i cant load Google Maps at the moment")};
+
 
 class App extends Component {
 
@@ -71,18 +74,18 @@ if (error) {
 
 
     return(
-      <div className='App'>
-        <header className='App-header'>
-          <h1 className='App-title'>Sights and Sounds of Cambridge</h1>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Sights and Sounds of Cambridge</h1>
         </header>
 
-        {/*<div className = 'search-box'>
+        {/*<div className = "search-box">
           <Search
           places = {this.state.places}
 
            />
         </div>*/}
-        <div className ='map-container'>
+        <div>
           <MapContainer
           places = {this.state.places}
           query = {this.state.query}
@@ -90,7 +93,7 @@ if (error) {
           clearQuery = {this.clearQuery}
           />
         </div>
-        <footer className='App-footer'>
+        <footer className="App-footer">
           <p>Udacity Project #8: Neighbourhood Maps by Alicia Thornthwaite</p>
         </footer>
       </div>
