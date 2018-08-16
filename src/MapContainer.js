@@ -7,6 +7,7 @@ import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 export class MapContainer extends Component {
 state = {
   showingInfoWindow: false,
+  disableAutoPan: false,
   activeMarker: {},
   selectedPlace: {},
   queryResults:[]
@@ -31,7 +32,8 @@ markers.push(marker);*/
         this.setState({
           selectedPlace: props,
           activeMarker: place,
-          showingInfoWindow: true
+          showingInfoWindow: true,
+          disableAutoPan: false
         });
 
 //As understood from google-maps-react npm documentation
@@ -44,6 +46,8 @@ markers.push(marker);*/
             }
           }
 
+
+
           /*disableAutoPan = (clicked, e) => {
               if (this.onClicked) {
                 this.setState({
@@ -51,7 +55,12 @@ markers.push(marker);*/
                   disableAutoPan: true,
                 })
               }
-            }*/
+            }
+
+    this.props.google.maps.event.addListenerOnce(map, 'idle', () => {
+  document.getElementsByTagName('iframe')[0].title = "Google Maps";
+})*/
+
 
 render() {
            const { places, query} = this.props
@@ -64,16 +73,13 @@ render() {
              queryResults = places
            }
 // Bounds - As understood from google-maps-react npm documentation
-const points = [
-    { lat: 52.02, lng: 0.2601 },
-    { lat: 52.03, lng: 0.2602 },
-    { lat: 51.03, lng: 0.2604 },
-    { lat: 52.05, lng: 0.2602 }
-]
+
 const bounds = new this.props.google.maps.LatLngBounds();
-for (var i = 0; i < points.length; i++) {
+/*for (var i = 0; i < points.length; i++) {
   bounds.extend(points[i]);
-}
+}*/
+
+places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.location.lng }));
 
     return (
       <div>
@@ -84,6 +90,8 @@ for (var i = 0; i < points.length; i++) {
              <input className="search-bar"
                     type="text"
                     role="search"
+                    aria-label="Search"
+                    tabindex="0"
                     placeholder="Type in a place of Interest"
                     value={ query }
                     onChange={(event) => this.props.updateQuery(event.target.value)} />
@@ -98,8 +106,8 @@ for (var i = 0; i < points.length; i++) {
             )}
               <ul className='place-list'>
                 {queryResults.map((queryResult,i) => (
-                  <li key={i} className='place-list-item'>
-                      <div className='place-details'>
+                  <li key={i} className='place-list-item' >
+                      <div className='place-details' tabindex="0">
                           <h3>{queryResult.title}</h3>
                           <hr></hr>
                       </div>
@@ -108,7 +116,7 @@ for (var i = 0; i < points.length; i++) {
                 </ul>
 
       </div>
-        <div className='map'>
+        <div className='map' aria-label="google-maps-area" tabindex="0" >
           <Map
             google={this.props.google}
             initialCenter={{

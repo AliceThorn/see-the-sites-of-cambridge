@@ -1,7 +1,7 @@
 .App {
   display:flex;
 flex-wrap: wrap;
-flex-direction: 
+flex-direction:
 }
 
 .App-header {
@@ -9,7 +9,7 @@ flex-direction:
   width:100%;
   height:10vh;
   background-color: #ff6600;
-  color: white;
+  color: #ffffff;
 
 }
 
@@ -18,7 +18,7 @@ flex-direction:
   width:100%;
   height:10vh;
   background-color: #ff6600;
-  color: white;
+  color: #fffff0;
 }
 .map-container{
   width: 100%;
