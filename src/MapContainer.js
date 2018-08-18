@@ -3,25 +3,15 @@ import escapeRegExp from 'escape-string-regexp'
 
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
-
 export class MapContainer extends Component {
 state = {
   showingInfoWindow: false,
+  openInfoWindow: false,
   activeMarker: {},
   selectedPlace: {},
+  defaultIcon:{},
   queryResults:[]
   };
-
-
-  /*const markers= markers.map(place,i) => {
-  const marker  = new google.maps.Marker({
-  title: place.title,
-                  position: { lat: place.location.lat,
-                              lng: place.location.lng
-                            }
-          })
-        }
-markers.push(marker);*/
 
 
 
@@ -30,8 +20,9 @@ markers.push(marker);*/
       onMarkerClick = (props, place, e) =>
         this.setState({
           selectedPlace: props,
+          venues: props,
           activeMarker: place,
-          showingInfoWindow: true,
+          showingInfoWindow: true
         });
 
 //As understood from google-maps-react npm documentation
@@ -44,19 +35,109 @@ markers.push(marker);*/
             }
           }
 
+          makeMarkerIcon=(markerColor)=>{
+              let markerImage = new this.props.google.maps.MarkerImage(
+                'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|'+ markerColor +
+                new this.props.google.maps.Size(21, 34),
+                new this.props.google.maps.Point(0, 0),
+                new this.props.google.maps.Point(10, 34),
+                new this.props.google.maps.Size(21,34));
+              return markerImage;
+            }
+
+//showInfoWindow=(infoWindow)=>{ new this.props.google.maps.InfoWindow()}
+
+onListClick=(props, place, e) =>
+  this.setState({
+    selectedPlace: props,
+    activeMarker: place,
+    showingInfoWindow: true
+  });
+
+
 render() {
+  const { places, query, venues} = this.props
 
-const { places, query} = this.props
+  let queryResults
+    if (query) {
+      const match = new RegExp(escapeRegExp(query), 'i')
+      queryResults = places.filter((place) => match.test(place.name))
+      } else {
+        queryResults = places
+    }
 
-let queryResults
-  if (query) {
-    const match = new RegExp(escapeRegExp(query), 'i')
-    queryResults = places.filter((place) => match.test(place.title))
-    } else {
-      queryResults = places
-  }
+const placesId = places.map((place) => {
+  return(
+  place.id
+)
 
-// Bounds - As understood from google-maps-react npm documentation
+})
+console.log(placesId)
+const venuesId = venues.map((item) => {
+  return(
+    item.venue.id
+  )
+})
+console.log(venuesId)
+
+const venuesLocationList = venues.map((item,i) => {
+  return(
+    item.venue.location.address
+  )
+})
+console.log(venuesLocationList[4])
+
+
+/*const venuesLocation = venues.map((venue,i) => {
+  return(
+    venuesLocationList.i
+  )
+})
+console.log(venuesLocation)*/
+
+
+let venueAddress
+if (placesId === venuesId){
+venueAddress = venuesLocationList[4]
+} else {
+  venueAddress= "No address provided"
+}
+
+
+
+//&& venues.location.address!=null
+//const venueAddress = item.venues.map(item =>{item.venues.name})
+/* const venueList = venues.map(item =>{
+  return(
+  item.venue.location.address
+)
+});*/
+
+/* const venueList = venues.map(item =>{
+//console.log(places.id)
+console.log(item.venue.id)
+console.log(item.venue.location.address)
+item.venue.location.address
+})
+ let venueList
+if(places.id === item.venue.id && item.venue.location.address!=null) {
+venueList = venues.map(venue =>{
+  key= item.venue.id
+  item.venue.location.address}
+} else {
+    item.venue.name
+  )};*/
+
+
+
+//document.getElementsByClassName('place-details').addEventListener('click', this.onMarkerClick);
+
+//default marker icon seen on the map
+//let defaultIcon = this.makeMarkerIcon('ff6600');
+//Changed icon-marker color for when the markeris clicked
+//let changeIcon = this.makeMarkerIcon('5BC3E5');
+
+// Bounds - As understood from google-maps-react npm documentation and rewritten in es6
 const bounds = new this.props.google.maps.LatLngBounds();
 /*for (var i = 0; i < points.length; i++) {bounds.extend(points[i]);}*/
 places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.location.lng }));
@@ -65,13 +146,13 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
       <div className ="map-container">
       <div className="search-box">
          <div className="choose-location-type">
-           <h3>Sights of Cambridge City</h3>
+           <h3>Cambridge City</h3>
           <div className="map-input-wrapper">
              <input className="search-bar"
                     type="text"
                     role="search"
                     aria-label="Search"
-                    placeholder="Type in a place of Interest"
+                    placeholder="Search Here"
                     value={ query }
                     onChange={(event) => this.props.updateQuery(event.target.value)} />
            </div>
@@ -85,9 +166,12 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
             )}
               <ul className="place-list">
                 {queryResults.map((queryResult,i) => (
-                  <li key={i} className="place-list-item" >
+                  <li key={i} className="place-list-item">
                       <div className="place-details">
-                          <h3>{queryResult.title}</h3>
+                          <h3
+                          onClick={this.onMarkerClick}
+                          >
+                          {queryResult.name}</h3>
                           <hr></hr>
                       </div>
                   </li>
@@ -107,13 +191,14 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
             mapTypeControl={false}
             onClick={this.onMapClicked}
             role="application"
+
           >
 {/*pass an array of markers and map over them  -  As understood  here: https://stackoverflow.com/questions/43859785/how-do-i-display-multiple-markers-with-react-google-maps*/}
             {queryResults.map((place,i) => (
               <Marker
                 onClick={this.onMarkerClick}
                 onMapClicked={this.onMapClicked}
-                title={place.title}
+                name={place.name}
                 position={{ lat: place.location.lat, lng: place.location.lng }}
                 key={i}
                 animation= {this.props.google.maps.Animation.DROP}
@@ -127,10 +212,10 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
                 visible={this.state.showingInfoWindow}
               >
                 <div>
-                  <h4>{this.state.selectedPlace.title}</h4>
+              <h4>{this.state.selectedPlace.name}</h4>
+                  <h3>{venueAddress}</h3>
                 </div>
               </InfoWindow>
-
           </Map>
         </div>
 
@@ -146,3 +231,15 @@ export default GoogleApiWrapper({
 
 
 //AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8
+
+
+
+  /*const markers= markers.map(place,i) => {
+  const marker  = new google.maps.Marker({
+  name: place.name,
+                  position: { lat: place.location.lat,
+                              lng: place.location.lng
+                            }
+          })
+        }
+markers.push(marker);*/
