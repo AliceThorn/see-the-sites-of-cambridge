@@ -50,7 +50,7 @@ clearQuery = () => {
        }
       }).then(data => {
         this.setState({ venues: data.response.groups[0].items, isLoading: false });
-        console.log(this.state.venues)
+        //console.log(this.state.venues)
       })
       .catch(error => this.setState({ error, isLoading: false }));
 }

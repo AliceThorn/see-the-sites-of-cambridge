@@ -36,6 +36,8 @@ width:25%;
 height:85vh;
 background-color:#716C6B;
 color: white;
+position: relative;
+transform: translate(0,0);
 }
 
 .map{
@@ -103,9 +105,34 @@ font-size: 14px;
 }
 
 @media only screen and (max-width: 600px) {
-/*toggle sidebar*/
-}
-
-@media only screen and (max-width: 600px) {
+  .search-box h3{
+  font-size: 10px;
+  }
+  .App-header{
+  font-size: 10px;
+  padding: 10px
+  }
+  .search-box {
+    position: relative;
+    transform: translate(-300px,0);
+    transition:  0.9s ease;
+  }
+  .search-box .closebtn{
+    position: absolute;
+    top:0px;
+    right:25px;
+    font-size:36px;
+    margin-left:50px;
+  }
+  .map{
+    flex-grow: 1;
+    position: relative;
+    transform: translate(-140px,0);
+    transition:  0.2s ease;
+  }
+  .map-container{
+    display:flex;
+    flex-flow: nowrap;
+  }
 
 }

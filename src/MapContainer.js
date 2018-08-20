@@ -7,20 +7,18 @@ export class MapContainer extends Component {
 state = {
   showingInfoWindow: false,
   openInfoWindow: false,
+  selectedListItem: null,
   activeMarker: {},
   selectedPlace: {},
   defaultIcon:{},
-  queryResults:[]
+  queryResults:[],
   };
 
 
-
-
-//As understood from google-maps-react npm documentation - iopens an info window on marker click
+//As understood from google-maps-react npm documentation - opens an info window on marker click
       onMarkerClick = (props, place, e) =>
         this.setState({
           selectedPlace: props,
-          venues: props,
           activeMarker: place,
           showingInfoWindow: true
         });
@@ -33,7 +31,49 @@ state = {
                 activeMarker: null
               })
             }
+          };
+
+//As understood from https://stackoverflow.com/questions/51808256/how-to-open-the-corresponding-marker-infowindow-when-click-on-a-list-item/51830410
+      /*    showListInfoWindow(e, id) {
+            let result = data.find(item => {
+              return item.locationId === id;
+            });
+            this.setState({
+              selectedListItem: result
+            })
+          };
+
+
+//As understood from: https://gis.stackexchange.com/questions/36703/google-map-display-specific-markers-popup-using-a-list-of-markers
+
+       createMarker = (latlng, html) => {
+              const listMarker = new this.props.google.maps.Marker({
+                  position: latlng,
+                  //map: map
+              })
+            };
+
+ListItem = this.props.queryResult.map((queryResult,i)=>(
+queryResult.id =
+  this.createMarker(new this.props.google.maps.LatLng(queryResult.id))
+))
+      onclickitem =  window.google.maps.event.addListener(listMarker, 'click', function() {
+                  infowindow.setContent(html);
+                  infowindow.open(map, listMarker);
+              });
+              return listMarker
           }
+
+          onListItemClick = (queryResult) => {
+            if(listMarker.id === queryResult.id){
+            new listMarker.google.maps.event.trigger(listMarker, 'click')
+          }
+          }
+*/
+
+
+
+
 
           makeMarkerIcon=(markerColor)=>{
               let markerImage = new this.props.google.maps.MarkerImage(
@@ -46,14 +86,6 @@ state = {
             }
 
 //showInfoWindow=(infoWindow)=>{ new this.props.google.maps.InfoWindow()}
-
-onListClick=(props, place, e) =>
-  this.setState({
-    selectedPlace: props,
-    activeMarker: place,
-    showingInfoWindow: true
-  });
-
 
 render() {
   const { places, query, venues} = this.props
@@ -70,23 +102,22 @@ const placesId = places.map((place) => {
   return(
   place.id
 )
-
 })
-console.log(placesId)
+//console.log(placesId)
+
 const venuesId = venues.map((item) => {
   return(
     item.venue.id
   )
 })
-console.log(venuesId)
+//console.log(venuesId)
 
 const venuesLocationList = venues.map((item,i) => {
   return(
     item.venue.location.address
   )
 })
-console.log(venuesLocationList[4])
-
+//console.log(venuesLocationList[4])
 
 /*const venuesLocation = venues.map((venue,i) => {
   return(
@@ -97,8 +128,8 @@ console.log(venuesLocation)*/
 
 
 let venueAddress
-if (placesId === venuesId){
-venueAddress = venuesLocationList[4]
+if (placesId[0] === venuesId[1]){
+venueAddress = venuesLocationList[1]
 } else {
   venueAddress= "No address provided"
 }
@@ -142,10 +173,25 @@ const bounds = new this.props.google.maps.LatLngBounds();
 /*for (var i = 0; i < points.length; i++) {bounds.extend(points[i]);}*/
 places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.location.lng }));
 
+/* Appears to open the search-box by setting the width of the side navigation to 25% */
+function openNav() {
+    document.getElementsByClassName("search-box").width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+    document.getElementsByClassName("search-box").width = "0";
+}
+
+
+
     return (
       <div className ="map-container">
       <div className="search-box">
+      <span className="closebtn" onClick={closeNav()}>&times;</span>
+      <span onClick={openNav()}>&#9776;</span>
          <div className="choose-location-type">
+
            <h3>Cambridge City</h3>
           <div className="map-input-wrapper">
              <input className="search-bar"
@@ -169,9 +215,10 @@ places.map((place)=> bounds.extend({ lat: place.location.lat, lng: place.locatio
                   <li key={i} className="place-list-item">
                       <div className="place-details">
                           <h3
-                          onClick={this.onMarkerClick}
+                          onClick={this.showListInfoWindow}
                           >
                           {queryResult.name}</h3>
+
                           <hr></hr>
                       </div>
                   </li>
