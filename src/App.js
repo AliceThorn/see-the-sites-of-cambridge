@@ -4,7 +4,7 @@ import './App.css';
 import MapContainer from './MapContainer'
 
 //Error Handling in case of failure to load Google Maps API
-let gm_authFailure=() => {console.log("I'm sorry Dave i cant load Google Maps at the moment")};
+this.gm_authFailure=() => {console.log("I'm sorry Dave i cant load Google Maps at the moment")};
 
 
 class App extends Component {
@@ -49,6 +49,7 @@ componentDidMount(){
       .catch(error => this.setState({ error, isLoading: false })
     );
 }
+
 
 //sends venues to array
 /* fetchPlaces=()=> {

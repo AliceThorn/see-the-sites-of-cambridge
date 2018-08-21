@@ -11,7 +11,6 @@ state = {
   selectedListItem: null,
   activeMarker: {},
   selectedVenue: {},
-  defaultIcon:{},
   queryResults:[],
   venues:[],
   };
@@ -22,7 +21,7 @@ state = {
         this.setState({
           selectedVenue: props,
           activeMarker: venue,
-          showingInfoWindow: true
+          showingInfoWindow: true,
         });
 
 //As understood from google-maps-react npm documentation
@@ -35,12 +34,16 @@ state = {
             }
           };
 
-          onListClick = (props, venue, e) =>
+          onListClick = (props, venue, e) =>{
             this.setState({
               selectedVenue: props,
               activeMarker: venue,
-              showingInfoWindow: true
-            });
+              openInfoWindow: true
+  });
+        this.addListener('click', (evt) => {
+        new google.maps.InfoWindow()
+      }
+    }
 //As understood from https://stackoverflow.com/questions/51808256/how-to-open-the-corresponding-marker-infowindow-when-click-on-a-list-item/51830410
       /*    showListInfoWindow(e, id) {
             let result = data.find(item => {
@@ -220,12 +223,14 @@ function closeNav() {
                 <button className="button" onClick={this.props.clearQuery}>Show All</button>
               </div>
             )}
-                          {queryResult.name}</h3>
-
               <ul className="venue-list">
+                {queryResults.map((item,i) => (
                   <li key={i} className="venue-list-item">
                       <div className="venue-details">
-                          <h3 onClick={this.onListClick}>{item.venue.name}</h3>
+                      this.addListener('click', (evt) => {
+                      new window.google.maps.InfoWindow()
+                    }
+                          <p>{item.venue.name}</p>
                           <hr></hr>
                       </div>
                   </li>
