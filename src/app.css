@@ -68,7 +68,7 @@ transform: translate(0,0);
   margin-left:15px;
 }
 
-.places-list {
+.venues-list {
   margin-top:15px;
   margin-left:15px;
 }
@@ -88,10 +88,10 @@ ul{
   cursor: pointer;
 }
 
-ul.place-list{
+ul.venue-list{
   padding-left:0px;
 }
-.place-details{
+.venue-details{
   padding-left:5px;
 }
 
@@ -100,22 +100,36 @@ ul.place-list{
 @media only screen and (max-width: 799px) {
 
 .search-box h3{
-font-size: 14px;
+font-size: 20px;
 }
+
+.venue-details p{
+font-size: 16px;
+}
+
 }
 
 @media only screen and (max-width: 600px) {
-  .search-box h3{
+  .search-box p{
   font-size: 10px;
   }
-  .App-header{
-  font-size: 10px;
-  padding: 10px
+  .App-header h2{
+  font-size: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
   }
+
+  .App-footer p{
+  font-size: 10px;
+  padding-bottom: 0px;
+  padding-top: 10px;
+  }
+
   .search-box {
     position: relative;
     transform: translate(-300px,0);
     transition:  0.9s ease;
+    width: 0vw;
   }
   .search-box .closebtn{
     position: absolute;
@@ -125,10 +139,7 @@ font-size: 14px;
     margin-left:50px;
   }
   .map{
-    flex-grow: 1;
-    position: relative;
-    transform: translate(-140px,0);
-    transition:  0.2s ease;
+    width:100vw;
   }
   .map-container{
     display:flex;

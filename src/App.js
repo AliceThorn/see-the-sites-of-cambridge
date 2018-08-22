@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
+
 import MapContainer from './MapContainer'
 
 //Error Handling in case of failure to load Google Maps API
@@ -14,6 +15,9 @@ class App extends Component {
   queryResult:[],
   isLoading:false,
   error:null,
+  showingInfoWindow: false,
+  activeMarker: {},
+  selectedVenue: {},
 };
 
 updateQuery = (query) => {
@@ -25,6 +29,23 @@ clearQuery = () => {
    this.setState({ query: '' })
    this.setState({ queryResult: this.state.venues})
  }
+
+ onMarkerClick = (props, venue, e) =>
+   this.setState({
+     selectedVenue: props,
+     activeMarker: venue,
+     showingInfoWindow: true,
+   });
+
+
+   onMapClicked = (props) => {
+       if (this.state.showingInfoWindow) {
+         this.setState({
+           showingInfoWindow: false,
+           activeMarker: null
+         })
+       }
+     };
 
   //As understood from notes here: https://www.robinwieruch.de/react-fetching-data/
 componentDidMount(){
@@ -51,37 +72,6 @@ componentDidMount(){
 }
 
 
-//sends venues to array
-/* fetchPlaces=()=> {
- this.state.venues.map(markerVenue => {
-  const marker = new google.maps.Marker({
- name:markerVenue.venue.name,
-    position: {lat: markerVenue.venue.location.lat,
-              lng: markerVenue.venue.location.lng},
-    //  map: map,
-      animation: window.google.maps.Animation.DROP
-})
-
-//})
-this.state.venues.push(markerVenue);
-}*/
-
-/*createMarker = () =>{
-//this.state.venues.map(markerVenue => {
-const marker = new window.google.maps.Marker({
-  position:{
-    lat:52.2053,
-    lng: 0.1218
-  },
-name:markerVenue.venue.name,
-  position: {lat: markerVenue.venue.location.lat,
-          lng: markerVenue.venue.location.lng},
-  map: map,
-    animation: window.google.maps.Animation.DROP
-  });
-})*/
-
-
   render(){
 //As understood from notes here: https://www.robinwieruch.de/react-fetching-data/
     const { isLoading, error } = this.state;
@@ -95,15 +85,22 @@ name:markerVenue.venue.name,
     return(
       <div className="App">
         <header className="App-header">
-          <h2 className="App-title">Sights and Sounds of Cambridge</h2>
+
+          <h2 className="App-title">Cambridge City Museums</h2>
         </header>
+        <div>
+        <span onClick={this.openNav}>&#9776;</span>
+        </div>
         <div>
           <MapContainer
           venues ={this.state.venues}
           query = {this.state.query}
           updateQuery = {this.updateQuery}
           clearQuery = {this.clearQuery}
-          createMarker = {this.createMarker}
+          onMarkerClick = {this.onMarkerClick}
+          showingInfoWindow={this.state.showingInfoWindow}
+          activeMarker={this.state.activeMarker}
+          selectedVenue={this.state.selectedVenue}
           />
         </div>
         <footer className="App-footer">

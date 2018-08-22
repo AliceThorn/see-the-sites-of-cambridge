@@ -6,44 +6,9 @@ import {Marker, InfoWindow, Map, GoogleApiWrapper} from 'google-maps-react';
 
 export class MapContainer extends Component {
 state = {
-  showingInfoWindow: false,
-  openInfoWindow: false,
-  selectedListItem: null,
-  activeMarker: {},
-  selectedVenue: {},
   queryResults:[],
-  venues:[],
   };
 
-
-//As understood from google-maps-react npm documentation - opens an info window on marker click
-      onMarkerClick = (props, venue, e) =>
-        this.setState({
-          selectedVenue: props,
-          activeMarker: venue,
-          showingInfoWindow: true,
-        });
-
-//As understood from google-maps-react npm documentation
-        onMapClicked = (props) => {
-            if (this.state.showingInfoWindow) {
-              this.setState({
-                showingInfoWindow: false,
-                activeMarker: null
-              })
-            }
-          };
-
-          onListClick = (props, venue, e) =>{
-            this.setState({
-              selectedVenue: props,
-              activeMarker: venue,
-              openInfoWindow: true
-  });
-        this.addListener('click', (evt) => {
-        new google.maps.InfoWindow()
-      }
-    }
 //As understood from https://stackoverflow.com/questions/51808256/how-to-open-the-corresponding-marker-infowindow-when-click-on-a-list-item/51830410
       /*    showListInfoWindow(e, id) {
             let result = data.find(item => {
@@ -60,7 +25,6 @@ state = {
        createMarker = (latlng, html) => {
               const listMarker = new this.props.google.maps.Marker({
                   position: latlng,
-                  //map: map
               })
             };
 
@@ -185,24 +149,37 @@ const bounds = new this.props.google.maps.LatLngBounds();
 venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venue.location.lng }));
 
 /* Appears to open the search-box by setting the width of the side navigation to 25% */
-function openNav() {
+/*function openNav() {
     document.getElementsByClassName("search-box").width = "250px";
 }
 
 /* Set the width of the side navigation to 0 */
-function closeNav() {
+/*function closeNav() {
     document.getElementsByClassName("search-box").width = "0";
 }
+<span className="closebtn" onClick={closeNav()}>&times;</span>
+*/
 
-
-
-
-
+/*const showInfoWindow = (props, item, i) =>{
+const marker=new window.google.maps.Marker({
+  name:item.venue.name,
+  position:{ lat: item.venue.location.lat, lng: item.venue.location.lng },
+  key:i,
+  animation: this.props.google.maps.Animation.DROP
+  });
+if(marker.name===this.state.queryResult.name)
+  this.setState({
+onOpen:true,
+visible:true,
+selectedVenue: props,
+activeMarker: item,
+showingInfoWindow: true,
+})
+}
+*/
   return (
     <div className ="map-container">
       <div className="search-box">
-      <span className="closebtn" onClick={closeNav()}>&times;</span>
-      <span onClick={openNav()}>&#9776;</span>
          <div className="choose-location-type">
 
            <h3>Cambridge City</h3>
@@ -227,10 +204,8 @@ function closeNav() {
                 {queryResults.map((item,i) => (
                   <li key={i} className="venue-list-item">
                       <div className="venue-details">
-                      this.addListener('click', (evt) => {
-                      new window.google.maps.InfoWindow()
-                    }
-                          <p>{item.venue.name}</p>
+                          <p onClick={this.props.onMarkerClick}
+                          >{item.venue.name}</p>
                           <hr></hr>
                       </div>
                   </li>
@@ -255,8 +230,8 @@ function closeNav() {
           {/*pass an array of markers and map over them  -  As understood  here: https://stackoverflow.com/questions/43859785/how-do-i-display-multiple-markers-with-react-google-maps*/}
             {queryResults.map((item,i) => (
               <Marker
-                onClick={this.onMarkerClick}
-                onMapClicked={this.onMapClicked}
+                onClick={this.props.onMarkerClick}
+                onMapClicked={this.props.onMapClicked}
                 name={item.venue.name}
                 position={{ lat: item.venue.location.lat, lng: item.venue.location.lng }}
                 key={i}
@@ -265,13 +240,13 @@ function closeNav() {
               ))}
 {/* As explained in google-maps-react npm documentation*/}
               <InfoWindow
-                marker={this.state.activeMarker}
+                marker={this.props.activeMarker}
                 onOpen={this.windowHasOpened}
                 onClose={this.windowHasClosed}
-                visible={this.state.showingInfoWindow}
+                visible={this.props.showingInfoWindow}
               >
                 <div>
-              <h4>{this.state.selectedVenue.name}</h4>
+              <h4>{this.props.selectedVenue.name}</h4>
                 </div>
               </InfoWindow>
           </Map>
@@ -301,11 +276,3 @@ export default GoogleApiWrapper({
           })
         }
 markers.push(marker);*/
-
-
-
-
-/*pass an array of markers and map over them  -  As understood  here: https://stackoverflow.com/questions/43859785/how-do-i-display-multiple-markers-with-react-google-maps*/
-          //
-/* As explained in google-maps-react npm documentation*/
-              /**/
