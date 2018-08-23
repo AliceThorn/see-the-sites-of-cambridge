@@ -31,7 +31,7 @@
   flex-wrap: wrap;
 }
 
-.search-box{
+.searchbox{
 width:25%;
 height:85vh;
 background-color:#716C6B;
@@ -99,7 +99,7 @@ ul.venue-list{
 
 @media only screen and (max-width: 799px) {
 
-.search-box h3{
+.searchbox h3{
 font-size: 20px;
 }
 
@@ -110,7 +110,7 @@ font-size: 16px;
 }
 
 @media only screen and (max-width: 600px) {
-  .search-box p{
+  .searchbox p{
   font-size: 10px;
   }
   .App-header h2{
@@ -125,13 +125,13 @@ font-size: 16px;
   padding-top: 10px;
   }
 
-  .search-box {
+  .searchbox {
     position: relative;
     transform: translate(-300px,0);
     transition:  0.9s ease;
     width: 0vw;
   }
-  .search-box .closebtn{
+  .searchbox .closebtn{
     position: absolute;
     top:0px;
     right:25px;
