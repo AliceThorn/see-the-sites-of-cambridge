@@ -17,6 +17,9 @@ render() {
         queryResults = venues
     }
 
+//const markers = [...document.querySelectorAll(".gmnoprint map area")];
+//const markers = [...document.querySelectorAll(".gmnoprint")];
+
 // Bounds - As understood from google-maps-react npm documentation and rewritten in es6
 const bounds = new this.props.google.maps.LatLngBounds();
 venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venue.location.lng }));
@@ -45,19 +48,20 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
               </div>
             )}
               <ul className="venue-list">
-                {queryResults.map((item,i) => (
-                  <li key={i} className="venue-list-item">
+              {queryResults.map((item,i) => (
+                  <li key={i}
+                      onClick={this.props.onListItemClick} className="venue-list-item">
                       <div className="venue-details">
-                          <p onClick={this.props.onMarkerClick}
-                          >{item.venue.name}</p>
+                        <div>
+                          <p className="list-name">{item.venue.name}</p>
                           <hr></hr>
+                        </div>
                       </div>
                   </li>
-                ))}
-                </ul>
-
+                      ))}
+              </ul>
       </div>
-        <div className="map" aria-label="google-maps-area">
+      <div className="map" aria-label="google-maps-area">
           <Map
             google={this.props.google}
             initialCenter={{
@@ -74,12 +78,16 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
           {/*pass an array of markers and map over them  -  As understood  here: https://stackoverflow.com/questions/43859785/how-do-i-display-multiple-markers-with-react-google-maps*/}
             {queryResults.map((item,i) => (
               <Marker
+              //adding a reference to a react element as understood from here: https://reactjs.org/docs/refs-and-the-dom.html
+                ref={this.props.createMarker}
                 onClick={this.props.onMarkerClick}
                 onMapClicked={this.props.onMapClicked}
                 name={item.venue.name}
                 position={{ lat: item.venue.location.lat, lng: item.venue.location.lng }}
                 key={i}
-                animation= {this.props.google.maps.Animation.DROP}
+//Note: this is as explained and understood at: https://stackoverflow.com/questions/51160344/animate-marker-when-click-on-a-list-item-google-maps-react
+//animates the marker on click
+                animation= {this.props.activeMarker ? (this.props.activeMarker.name === item.venue.name ? "1" : "0") : "0"}
               />
               ))}
 {/* As explained in google-maps-react npm documentation*/}
@@ -94,9 +102,9 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
                 </div>
               </InfoWindow>
           </Map>
-        </div>
-
       </div>
+
+    </div>
 
       );
     }

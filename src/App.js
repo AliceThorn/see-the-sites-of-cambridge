@@ -11,6 +11,7 @@ this.gm_authFailure=() => {console.log("I'm sorry Dave i cant load Google Maps a
 class App extends Component {
   state = {
   venues:[],
+  markers:[],
   query:'',
   queryResult:[],
   isLoading:false,
@@ -36,6 +37,18 @@ clearQuery = () => {
      activeMarker: venue,
      showingInfoWindow: true,
    });
+
+
+createMarker =(marker)=>{
+//to stop on search markers with value null being added to Array, markers now only added once
+  if(marker!==null)
+  this.state.markers.push(marker)
+}
+
+   onListItemClick = (e) => {
+    const listMarkers = this.state.markers.find(marker => marker.name === e.target.innerText);
+    listMarkers
+   }
 
 
    onMapClicked = (props) => {
@@ -93,14 +106,17 @@ componentDidMount(){
         </div>
         <div>
           <MapContainer
+          markers={this.state.markers}
           venues ={this.state.venues}
           query = {this.state.query}
           updateQuery = {this.updateQuery}
           clearQuery = {this.clearQuery}
           onMarkerClick = {this.onMarkerClick}
+          onListItemClick = {this.onListItemClick}
           showingInfoWindow={this.state.showingInfoWindow}
           activeMarker={this.state.activeMarker}
           selectedVenue={this.state.selectedVenue}
+          createMarker = {this.createMarker}
           />
         </div>
         <footer className="App-footer">
