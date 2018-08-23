@@ -80,10 +80,10 @@ componentDidMount(){
     );
 }
 
-closeNav=()=> {
+openNav = () => {
     this.setState({sideOpen: !this.state.sideOpen})
 }
-openNav=()=> {
+closeNav = () => {
   this.setState({sideOpen: this.state.sideOpen})
 }
 
@@ -100,7 +100,7 @@ openNav=()=> {
     return(
       <div className="App">
         <header className="App-header">
-          <h2 className="App-title"><button className="button_3" onClick={this.openNav}>☰</button>
+          <h2 className="App-title"><button className="button_1" onClick={this.openNav}>☰</button>
           Cambridge City Museums</h2>
         </header>
         <div>
@@ -116,6 +116,7 @@ openNav=()=> {
             activeMarker={this.state.activeMarker}
             selectedVenue={this.state.selectedVenue}
             onMapClicked={this.onMapClicked}
+            closeNav={this.closeNav}
           />
         </div>
         <footer className="App-footer">

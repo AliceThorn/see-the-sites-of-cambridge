@@ -19,22 +19,20 @@ render() {
         queryResults = venues
     }
 
-//const markers = [...document.querySelectorAll(".gmnoprint map area")];
-//const markers = [...document.querySelectorAll(".gmnoprint")];
 
-// Bounds - As understood from google-maps-react npm documentation and rewritten in es6
+// Bounds - As understood from google-maps-react npm documentation and rewritten
 const bounds = new this.props.google.maps.LatLngBounds();
 venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venue.location.lng }));
 
 
-let searchbox = this.props.sideOpen ? 'searchbox open' : 'searchbox';
-let map = this.props.sideOpen ? 'map open' : 'map';
+//let searchbox = this.props.sideOpen ? 'searchbox open' : 'searchbox';
+//let map = this.props.sideOpen ? 'map open' : 'map';
 
   return (
     <div className ="map-container">
       <div className="searchbox">
          <div className="choose-location-type">
-  <button onClick={this.props.closeNav} id="close-button" className="button_2">Close &times;</button>
+  <button onClick={this.props.closeNav} id="close-button" className="button_2">&times;</button>
            <h3>Cambridge City</h3>
           <div className="map-input-wrapper">
              <input className="search-bar"
