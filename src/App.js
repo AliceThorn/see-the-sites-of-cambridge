@@ -100,10 +100,12 @@ openSideBar = () => {
   searchbox.classList.toggle("open")
 }
 
-/*closes the side search box on screens smaller than 700px
+//closes the side search box on screens smaller than 600px
 closeSideBar = () => {
   this.setState({isSideBarOpen: this.state.isSideBarOpen})
-}*/
+  const searchbox = document.getElementById("searchbox")
+  searchbox.classList.toggle("open")
+}
 
   render(){
 //As understood from notes here: https://www.robinwieruch.de/react-fetching-data/

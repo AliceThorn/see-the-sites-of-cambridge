@@ -18,7 +18,7 @@ const { query, venues} = this.props
         queryResults = venues
     }
 
-// Bounds - As understood from google-maps-react npm documentation and my function created
+// Bounds - As understood from google-maps-react npm documentation
 const bounds = new this.props.google.maps.LatLngBounds();
 venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venue.location.lng }));
 
@@ -27,6 +27,7 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
     <div className ="map-container">
       <div id="searchbox" className="sideBar">
          <div className="choose-location-type">
+         <button onClick={this.props.closeSideBar} id="close-button">&times;</button>
            <h3 tabIndex="0" aria-label="Cambridge Museums">Cambridge Museums</h3>
           <div className="map-input-wrapper">
              <input className="search-bar"
@@ -109,7 +110,7 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
               onClose={this.windowHasClosed}
               visible={this.props.showingInfoWindow}
             >
-              <div>
+              <div className="infowindow">
                 <h4>{this.props.selectedVenue.name}</h4>
                 <h4>{this.props.selectedVenue.address}</h4>
               </div>
