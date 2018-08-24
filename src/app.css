@@ -37,9 +37,9 @@
   flex-wrap: wrap;
 }
 
-.searchbox{
+#searchbox{
 width:25%;
-height:85vh;
+height:100%;
 background-color:#716C6B;
 color: white;
 position: relative;
@@ -75,14 +75,14 @@ transform: translate(0,0);
 }
 
 
-#button_1 {
+#open-button {
   color: #ff6600;
   font-size: 0px;
   background-color: #ff6600;
   display: none;
 }
 
-.button_2 {
+#close-button {
   color: white;
   background-color: #716C6B;
   text-align: center;
@@ -122,11 +122,9 @@ ul.venue-list{
   cursor: pointer;
 }
 
-
-
 @media only screen and (max-width: 799px) {
 
-.searchbox h3{
+#searchbox h3{
 font-size: 20px;
 }
 
@@ -136,9 +134,9 @@ font-size: 16px;
 
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
 
-  #button_1 {
+  #open-button {
     color: white;
     font-size: 20px;
     background-color: #ff6600;
@@ -148,7 +146,7 @@ font-size: 16px;
     cursor: pointer;
 }
 
-  .button_2 {
+  #close-button {
     border-radius: 4px;
     color: white;
     background-color: #ff6600;
@@ -159,10 +157,10 @@ font-size: 16px;
     cursor: pointer;
   }
 
-
-  .searchbox p{
+  #searchbox p{
   font-size: 10px;
   }
+
   .App-header h2{
   font-size: 20px;
   padding-bottom: 20px;
@@ -175,19 +173,13 @@ font-size: 16px;
   padding-top: 10px;
   }
 
-  .searchbox {
-    position: relative;
+  .sideBar {
+
     transform: translate(-300px,0);
     transition:  0.9s ease;
     width: 0vw;
   }
-  .searchbox .closebtn{
-    position: absolute;
-    top:0px;
-    right:25px;
-    font-size:36px;
-    margin-left:50px;
-  }
+
   .map{
     width:100vw;
   }
@@ -196,11 +188,9 @@ font-size: 16px;
     flex-flow: nowrap;
   }
 
-  .searchbox .open {
-    transform: translate(0px,0);
-}
-.map.open {
-    width:75vw;
+  .sideBar .open {
+    transform: translate(0,0);
+    transition:  0.9s ease;
 }
 
 }

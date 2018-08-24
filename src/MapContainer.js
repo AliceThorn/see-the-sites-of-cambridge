@@ -25,9 +25,8 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
 
   return (
     <div className ="map-container">
-      <div className="searchbox">
+      <div id="searchbox" className="sideBar">
          <div className="choose-location-type">
-  <button onClick={this.props.closeNav} id="close-button" aria-label="sends search bar off screen" className="button_2">&times;</button>
            <h3 tabIndex="0" aria-label="Cambridge Museums">Cambridge Museums</h3>
           <div className="map-input-wrapper">
              <input className="search-bar"
@@ -50,7 +49,7 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
               {queryResults.map((item, i) => (
                 <li
                   key={i}
-                  onClick={e => this.props.onListItemClick(e.target)}
+                  onClick={this.props.onListItemClick}
                   className="venue-list-item"
                 >
                   <div className="venue-details">
@@ -81,6 +80,8 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
           {/*pass an array of markers and map over them  -  As understood  here: https://stackoverflow.com/questions/43859785/how-do-i-display-multiple-markers-with-react-google-maps*/}
           {queryResults.map((item, i) => (
               <Marker
+              //adding a reference to a react element as understood from here: https://reactjs.org/docs/refs-and-the-dom.html
+                ref={this.props.createMarker}
                 onClick={this.props.onMarkerClick}
                 name={item.venue.name}
                 title={item.venue.name}

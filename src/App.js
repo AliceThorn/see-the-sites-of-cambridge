@@ -7,10 +7,11 @@ import MapContainer from './MapContainer'
 class App extends Component {
   state = {
   venues:[],
+  markers:[],
   query:'',
   queryResult:[],
   isLoading:false,
-  addClass:false,
+  isSideBarOpen:false,
   error:null,
   showingInfoWindow: false,
   activeMarker: {},
@@ -37,23 +38,24 @@ clearQuery = () => {
      showingInfoWindow: true,
    });
 
-//several components of google maps are wrapped in the class gmnoprint including the map markers which I was able to find using Chrome Dev Tools
-// selectedMarker compares the markers title to the inner text of the list item
-//help sought with google-maps-react on slack channel and solution demonstrated by fellow Udacity student Schular from which I have written my own function
-onListItemClick = (e) => {
-  let listMarkers
-  if (document.querySelectorAll(".gmnoprint map area") === undefined){
-  listMarkers = [...document.querySelectorAll(".gmnoprint map area")];
-} else {
-  listMarkers = [...document.querySelectorAll(".gmnoprint")];
-}
-  const selectedMarker = listMarkers.find(
-    marker => marker.title === e.innerText
-  );
-  if(selectedMarker!== undefined){
-  selectedMarker.click();
-  }
-};
+   //creates an array of markers
+     createMarker = marker => {
+       //to stop on search markers with value null being added to Array, markers now only added once
+       if (marker !== null) this.state.markers.push(marker);
+     };
+
+//function compares list item to marker from node list created above. Had help with a bug (no props) which fellow Udacity Student andreafrontend on the forums helped me solve
+//See forum conversation here: https://discussions.udacity.com/t/google-maps-react-issue-with-list-item-and-markers/864262/2
+     onListItemClick = (e) => {
+       const listMarkers = this.state.markers.find(
+         marker => marker.props.name === e.target.innerText
+       );
+
+    if(listMarkers !== undefined) {
+       listMarkers.marker.onClick(listMarkers.props, listMarkers.marker, e)
+    }
+  };
+
 
 //closes the infoWindow if open - as understood from google-maps-react npm documentation
    onMapClicked = (props) => {
@@ -93,14 +95,15 @@ componentDidMount(){
 }
 
 //opens the side search box on screens smaller than 700px
-openNav = () => {
-    this.setState({sideOpen: this.state.sideOpen});
+openSideBar = () => {
+  const searchbox = document.getElementById("searchbox")
+  searchbox.classList.toggle("open")
 }
 
-//closes the side search box on screens smaller than 700px
-closeNav = () => {
-  this.setState({sideOpen: this.state.sideOpen})
-}
+/*closes the side search box on screens smaller than 700px
+closeSideBar = () => {
+  this.setState({isSideBarOpen: this.state.isSideBarOpen})
+}*/
 
   render(){
 //As understood from notes here: https://www.robinwieruch.de/react-fetching-data/
@@ -119,7 +122,8 @@ closeNav = () => {
           <h2 className="App-title"
               aria-label="Cambridge City Museums"
               tabIndex="0">
-              <button id="button_1"
+              <button id="open-button"
+                      onClick={this.openSideBar}
                       aria-label="opens search bar and brings back on screen"
                       tabIndex="0">☰</button>
           Cambridge City Museums</h2>
@@ -137,8 +141,11 @@ closeNav = () => {
             activeMarker={this.state.activeMarker}
             selectedVenue={this.state.selectedVenue}
             onMapClicked={this.onMapClicked}
-            closeNav={this.closeNav}
-            openNav={this.openNav}
+            createMarker={this.createMarker}
+            closeSideBar={this.closeSideBar}
+            openSideBar={this.openSideBar}
+            buttonClicked={this.buttonClicked}
+            isSideBarOpen={this.state.isSideBarOpen}
           />
         </div>
         <footer className="App-footer">
