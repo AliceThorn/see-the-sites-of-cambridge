@@ -27,7 +27,16 @@ MapContainer.js
 
 # Service Worker, CSS & Third Party APIs
 Default Service Worker register-service-worker was created by create-react-application
-and only works in production mode.
+and only works in production mode. Note that the development build is not optimized.
+
+To run the app in production mode - Using Terminal
+run: `npm run build`
+     `serve -s build`
+then navigate to http://localhost:5000/
+
+
+
+
 
 CSS is handled by App.css
 
