@@ -37,7 +37,7 @@
   flex-wrap: wrap;
 }
 
-#searchbox{
+.sideBar{
 width:25%;
 height:100%;
 background-color:#716C6B;
@@ -58,7 +58,6 @@ transform: translate(0,0);
 .search-bar{
     width: 100%;
     height: 30px;
-
 }
 
 .button {
@@ -124,7 +123,7 @@ ul.venue-list{
 
 @media only screen and (max-width: 799px) {
 
-#searchbox h3{
+.sideBar h4{
 font-size: 20px;
 }
 
@@ -157,7 +156,7 @@ font-size: 16px;
     cursor: pointer;
   }
 
-  #searchbox p{
+  .sideBar p{
   font-size: 10px;
   }
 
@@ -174,11 +173,19 @@ font-size: 16px;
   }
 
   .sideBar {
-
+    -webkit-transform: translate(-300,0);
     transform: translate(-300px,0);
     transition:  0.9s ease;
     width: 0vw;
   }
+
+  .sideBar.open {
+    width:50%;
+
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+    transition:  0.9s ease;
+}
 
   .map{
     width:100vw;
@@ -187,10 +194,4 @@ font-size: 16px;
     display:flex;
     flex-flow: nowrap;
   }
-
-  .sideBar .open {
-    transform: translate(0,0);
-    transition:  0.9s ease;
-}
-
 }
