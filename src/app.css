@@ -75,11 +75,11 @@ transform: translate(0,0);
 }
 
 
-.button_1 {
+#button_1 {
   color: #ff6600;
   font-size: 0px;
   background-color: #ff6600;
-  transform: translate(-800px,0);
+  display: none;
 }
 
 .button_2 {
@@ -87,7 +87,7 @@ transform: translate(0,0);
   background-color: #716C6B;
   text-align: center;
   font-size: 0px;
-  transform: translate(-300px,0);
+  display: none;
 }
 
 .venues-list {
@@ -117,6 +117,11 @@ ul.venue-list{
   padding-left:5px;
 }
 
+.venue-details h4{
+  background-color: #5d5958;
+  cursor: pointer;
+}
+
 
 
 @media only screen and (max-width: 799px) {
@@ -133,13 +138,15 @@ font-size: 16px;
 
 @media only screen and (max-width: 700px) {
 
-  .button_1 {
+  #button_1 {
     color: white;
     font-size: 20px;
     background-color: #ff6600;
     border: none;
-    transform: translate(-20px,0);
-  }
+    display: inline;
+    transform: translate(-30px,0);
+    cursor: pointer;
+}
 
   .button_2 {
     border-radius: 4px;
@@ -148,7 +155,8 @@ font-size: 16px;
     text-align: center;
     font-size: 20px;
     border: none;
-    transform: translate(0px,0);
+    display: inline;
+    cursor: pointer;
   }
 
 
@@ -188,7 +196,7 @@ font-size: 16px;
     flex-flow: nowrap;
   }
 
-  .searchbox.open {
+  .searchbox .open {
     transform: translate(0px,0);
 }
 .map.open {

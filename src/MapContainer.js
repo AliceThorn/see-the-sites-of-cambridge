@@ -8,8 +8,7 @@ export class MapContainer extends Component {
 
 render() {
 
-
-  const { query, venues} = this.props
+const { query, venues} = this.props
 //Regular Expressions used as explained in udacity course notes
   let queryResults
     if (query) {
@@ -19,32 +18,28 @@ render() {
         queryResults = venues
     }
 
-
-// Bounds - As understood from google-maps-react npm documentation and rewritten
+// Bounds - As understood from google-maps-react npm documentation and my function created
 const bounds = new this.props.google.maps.LatLngBounds();
 venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venue.location.lng }));
 
-
-//let searchbox = this.props.sideOpen ? 'searchbox open' : 'searchbox';
-//let map = this.props.sideOpen ? 'map open' : 'map';
 
   return (
     <div className ="map-container">
       <div className="searchbox">
          <div className="choose-location-type">
-  <button onClick={this.props.closeNav} id="close-button" className="button_2">&times;</button>
-           <h3>Cambridge City</h3>
+  <button onClick={this.props.closeNav} id="close-button" aria-label="sends search bar off screen" className="button_2">&times;</button>
+           <h3 tabIndex="0" aria-label="Cambridge Museums">Cambridge Museums</h3>
           <div className="map-input-wrapper">
              <input className="search-bar"
                     type="text"
                     role="search"
                     aria-label="Search"
-                    sholder="Search Here"
+                    placeholder="Search Here"
                     value={ query }
                     onChange={(event) => this.props.updateQuery(event.target.value)} />
            </div>
          </div>
-{/*As understood from udacity course notes - creates a list of searche places*/}
+{/*As understood from udacity course notes - creates a list of searched venues*/}
            {queryResults.length !== venues.length && (
              <div className="venues-list">
                 <span>Now showing {queryResults.length} of {venues.length} total</span>
@@ -60,7 +55,7 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
                 >
                   <div className="venue-details">
                     <div>
-                      <p className="list-name">{item.venue.name}</p>
+                      <h4 className="list-name">{item.venue.name}</h4>
                       <hr />
                     </div>
                   </div>
@@ -68,7 +63,7 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
               ))}
             </ul>
           </div>
-      <div className="map" aria-label="google-maps-area">
+      <div className="map" aria-label="google-maps-area" role="application">
           <Map
             google={this.props.google}
             initialCenter={{
@@ -86,7 +81,6 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
           {/*pass an array of markers and map over them  -  As understood  here: https://stackoverflow.com/questions/43859785/how-do-i-display-multiple-markers-with-react-google-maps*/}
           {queryResults.map((item, i) => (
               <Marker
-                //
                 onClick={this.props.onMarkerClick}
                 name={item.venue.name}
                 title={item.venue.name}

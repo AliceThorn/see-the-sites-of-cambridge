@@ -10,23 +10,26 @@ class App extends Component {
   query:'',
   queryResult:[],
   isLoading:false,
-  sideOpen:false,
+  addClass:false,
   error:null,
   showingInfoWindow: false,
   activeMarker: {},
   selectedVenue: {},
 };
 
+//updates the query, if something is seached for - as understood from Udacity notes
 updateQuery = (query) => {
   this.setState({ query: query });
   console.log(query)
 }
 
+//removes search data once search box is emptied and returns the full venue list - as understood from Udacity class notes
 clearQuery = () => {
    this.setState({ query: '' })
    this.setState({ queryResult: this.state.venues})
  }
 
+//opens an InfoWindow if marker or list item is clicked on - as understood from google-maps-react npm documentation
  onMarkerClick = (props, venue, e) =>
    this.setState({
      selectedVenue: props,
@@ -34,8 +37,16 @@ clearQuery = () => {
      showingInfoWindow: true,
    });
 
-onListItemClick = e => {
-  const listMarkers = [...document.querySelectorAll(".gmnoprint map area")];
+//several components of google maps are wrapped in the class gmnoprint including the map markers which I was able to find using Chrome Dev Tools
+// selectedMarker compares the markers title to the inner text of the list item
+//help sought with google-maps-react on slack channel and solution demonstrated by fellow Udacity student Schular from which I have written my own function
+onListItemClick = (e) => {
+  let listMarkers
+  if (document.querySelectorAll(".gmnoprint map area") === undefined){
+  listMarkers = [...document.querySelectorAll(".gmnoprint map area")];
+} else {
+  listMarkers = [...document.querySelectorAll(".gmnoprint")];
+}
   const selectedMarker = listMarkers.find(
     marker => marker.title === e.innerText
   );
@@ -44,6 +55,7 @@ onListItemClick = e => {
   }
 };
 
+//closes the infoWindow if open - as understood from google-maps-react npm documentation
    onMapClicked = (props) => {
        if (this.state.showingInfoWindow) {
          this.setState({
@@ -53,7 +65,7 @@ onListItemClick = e => {
        }
      };
 
-  //As understood from notes here: https://www.robinwieruch.de/react-fetching-data/
+//As understood from notes here: https://www.robinwieruch.de/react-fetching-data/
 componentDidMount(){
     //this.setState({ isLoading: true});
     this.getVenues ()
@@ -62,7 +74,7 @@ componentDidMount(){
 
 }
 
-//Also contains Error Handling in case of failure to load APIs
+//Also contains Error Handling in case of failure to load Third Party API
   getVenues =()=> {
     fetch('https://api.foursquare.com/v2/venues/explore?client_id=V0PCNSF1AQYCMV3VFHGTZIJXUSUL4ZNO3CRQFW2QDQQTOW1B&client_secret=BBRX55NXSA45AATXDQECBVXUQVQUVWF0RVKDLACKZQVGGPB1&v=20180323&limit=500&near=Cambridge,UK&radius=500&query=museums', {
     method: 'GET'
@@ -80,9 +92,12 @@ componentDidMount(){
     );
 }
 
+//opens the side search box on screens smaller than 700px
 openNav = () => {
-    this.setState({sideOpen: !this.state.sideOpen})
+    this.setState({sideOpen: this.state.sideOpen});
 }
+
+//closes the side search box on screens smaller than 700px
 closeNav = () => {
   this.setState({sideOpen: this.state.sideOpen})
 }
@@ -97,10 +112,16 @@ closeNav = () => {
           return <p>Loading ...</p>;
         }
 
+
     return(
       <div className="App">
         <header className="App-header">
-          <h2 className="App-title"><button className="button_1" onClick={this.openNav}>☰</button>
+          <h2 className="App-title"
+              aria-label="Cambridge City Museums"
+              tabIndex="0">
+              <button id="button_1"
+                      aria-label="opens search bar and brings back on screen"
+                      tabIndex="0">☰</button>
           Cambridge City Museums</h2>
         </header>
         <div>
@@ -117,6 +138,7 @@ closeNav = () => {
             selectedVenue={this.state.selectedVenue}
             onMapClicked={this.onMapClicked}
             closeNav={this.closeNav}
+            openNav={this.openNav}
           />
         </div>
         <footer className="App-footer">
