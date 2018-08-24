@@ -46,12 +46,15 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
                 <button className="button" onClick={this.props.clearQuery}>Show All</button>
               </div>
             )}
-            <ul className="venue-list">
+            <ul className="venue-list" role="listbox">
               {queryResults.map((item, i) => (
                 <li
                   key={i}
                   onClick={this.props.onListItemClick}
                   className="venue-list-item"
+                  role="option"
+                  aria-selected="true"
+                  tabIndex="0"
                 >
                   <div className="venue-details">
                     <div>
