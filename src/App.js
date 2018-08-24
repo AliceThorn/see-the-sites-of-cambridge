@@ -67,13 +67,16 @@ clearQuery = () => {
        }
      };
 
+//Error Handling in case of failure to load Google Maps API
+gm_authFailure() {
+  window.alert("I'm sorry, I cannot load Google Maps...")
+};
+
 //As understood from notes here: https://www.robinwieruch.de/react-fetching-data/
 componentDidMount(){
     //this.setState({ isLoading: true});
     this.getVenues ()
-    //Error Handling in case of failure to load Google Maps API
-    this.gm_authFailure=() => {console.log("I'm sorry Dave I cannot load Google Maps...")};
-
+    window.gm_authFailure = this.gm_authFailure.bind(this);
 }
 
 //Also contains Error Handling in case of failure to load Third Party API
@@ -84,7 +87,7 @@ componentDidMount(){
      if (response.ok) {
           return response.json();
        } else {
-          throw new Error('I am sorry Dave, I cannot load FourSquare API...');
+          throw new Error('I am sorry, I cannot load FourSquare API...');
        }
       }).then(data => {
         this.setState({ venues: data.response.groups[0].items, isLoading: false })
