@@ -38,9 +38,9 @@ clearQuery = () => {
      showingInfoWindow: true,
    });
 
-   //creates an array of markers
+   // function to create an array of markers - as understood from Google Maps API
      createMarker = marker => {
-       //to stop on search markers with value null being added to Array, markers now only added once
+    //to stop on search markers with value null being added to Array, markers now only added once
        if (marker !== null) this.state.markers.push(marker);
      };
 
@@ -72,7 +72,7 @@ componentDidMount(){
     //this.setState({ isLoading: true});
     this.getVenues ()
     //Error Handling in case of failure to load Google Maps API
-    this.gm_authFailure=() => {console.log("I'm sorry Dave I cant load Google Maps...")};
+    this.gm_authFailure=() => {console.log("I'm sorry Dave I cannot load Google Maps...")};
 
 }
 
