@@ -68,7 +68,6 @@ clearQuery = () => {
 
 //Error Handling in case of failure to load Google Maps API
 gm_authFailure() {
-//  window.alert("I'm sorry, I cannot load Google Maps...")
 document.getElementById("map-area").innerText=("I'm sorry Dave, I cannot load Google Maps...")
 };
 
