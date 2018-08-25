@@ -66,7 +66,7 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
               ))}
             </ul>
           </div>
-      <div className="map" aria-label="google-maps-area" role="application">
+      <div className="map" id="map-area" aria-label="google-maps-area" role="application">
           <Map
             google={this.props.google}
             initialCenter={{
