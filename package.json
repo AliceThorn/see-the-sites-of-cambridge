@@ -16,7 +16,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "homepage" : "https://alicethorn.github.io/see-the-sites-of-cambridge/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
   }
