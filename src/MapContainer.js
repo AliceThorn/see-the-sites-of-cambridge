@@ -128,7 +128,7 @@ venues.map((item)=> bounds.extend({ lat: item.venue.location.lat, lng: item.venu
   }
 
 export default GoogleApiWrapper({
-  apiKey: 'AIzaSyAA0IrgCP3zn6wb_04IHMk3PWWC6D7gIS8'
+  apiKey: 'my api key here'
 })(MapContainer)
 
 
